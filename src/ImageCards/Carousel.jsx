@@ -43,7 +43,7 @@ class Carousel extends Component {
               card.attachedimage
                 ? {
                     backgroundImage: `url(${fixUrl(
-                      getPath(card.attachedimage)
+                      getPath(card.attachedimage),
                     )})`,
                   }
                 : {}
@@ -127,7 +127,7 @@ class Carousel extends Component {
           {
             center: !Boolean(data.align),
           },
-          data.align
+          data.align,
         )}
       >
         <div

@@ -38,7 +38,7 @@ export const Card = (props) => {
                   attachedimage
                     ? {
                         backgroundImage: `url(${fixUrl(
-                          getPath(attachedimage)
+                          getPath(attachedimage),
                         )})`,
                       }
                     : {}
@@ -74,7 +74,7 @@ const RoundTiled = ({ data }) => {
         {
           center: !Boolean(data.align),
         },
-        data.align
+        data.align,
       )}
     >
       <div
