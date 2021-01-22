@@ -1,80 +1,80 @@
 const ImageCard = {
-  title: 'Image Card',
+  title: "Image Card",
   fieldsets: [
     {
-      id: 'default',
-      title: 'Default',
-      fields: ['title', 'text', 'attachedimage', 'link', 'copyright'],
+      id: "default",
+      title: "Default",
+      fields: ["title", "text", "attachedimage", "link", "copyright"],
     },
   ],
 
   properties: {
     title: {
-      type: 'string',
-      title: 'Title',
+      type: "string",
+      title: "Title",
     },
     text: {
-      widget: 'slate_richtext',
-      title: 'Text',
+      widget: "slate_richtext",
+      title: "Text",
     },
     link: {
-      widget: 'object_by_path',
-      title: 'Link',
+      widget: "object_by_path",
+      title: "Link",
     },
     attachedimage: {
-      widget: 'attachedimage',
-      title: 'Image',
+      widget: "attachedimage",
+      title: "Image",
     },
     copyright: {
-      widget: 'slate_richtext',
-      title: 'Copyright',
+      widget: "slate_richtext",
+      title: "Copyright",
     },
   },
 
-  required: ['attachedimage'],
+  required: ["attachedimage"],
 };
 
 const ImageCards = {
-  title: 'Image Cards',
+  title: "Image Cards",
 
   fieldsets: [
     {
-      id: 'default',
-      title: 'Default',
-      fields: ['title', 'text', 'display', 'align', 'cards'],
+      id: "default",
+      title: "Default",
+      fields: ["title", "text", "display", "align", "cards"],
     },
   ],
 
   properties: {
     title: {
-      type: 'string',
-      title: 'Title',
+      type: "string",
+      title: "Title",
     },
     text: {
-      widget: 'slate_richtext',
-      title: 'Text',
+      widget: "slate_richtext",
+      title: "Text",
     },
     display: {
-      title: 'Display',
+      title: "Display",
       choices: [
-        ['round_tiled', 'Round Tiled'],
-        ['carousel', 'Carousel'],
+        ["round_tiled", "Round Tiled"],
+        ["carousel", "Carousel"],
       ],
     },
     cards: {
-      widget: 'objectlist',
-      title: 'Images',
+      widget: "objectlist",
+      title: "Images",
       // this is an invention, should confront with dexterity serializer
       schema: ImageCard,
     },
     align: {
-      title: 'Alignment',
-      widget: 'align',
-      type: 'string',
+      title: "Alignment",
+      widget: "align",
+      type: "string",
     },
   },
 
-  required: ['display', 'cards'],
+  required: ["display", "cards"],
 };
 
 export default ImageCards;

@@ -16,6 +16,9 @@
     "type": "git",
     "url": "git@github.com:eea/volto-block-image-cards.git"
   },
+  "addons": [
+    "volto-slate:asDefault"
+  ],
   "dependencies": {
     "react-lazy-load-image-component": "^1.4.0",
     "react-slick": "^0.24.0",
