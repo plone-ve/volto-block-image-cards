@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import loadable from "@loadable/component";
-import { Icon } from "@plone/volto/components";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import loadable from '@loadable/component';
+import { Icon } from '@plone/volto/components';
+import { Link } from 'react-router-dom';
 
-import leftSVG from "@plone/volto/icons/left-key.svg";
-import rightSVG from "@plone/volto/icons/right-key.svg";
-import cx from "classnames";
+import leftSVG from '@plone/volto/icons/left-key.svg';
+import rightSVG from '@plone/volto/icons/right-key.svg';
+import cx from 'classnames';
 
-import "slick-carousel/slick/slick.css";
-import { fixUrl, getPath } from "./utils";
+import 'slick-carousel/slick/slick.css';
+import { fixUrl, getPath } from './utils';
 
-import { serializeNodes } from "volto-slate/editor/render";
+import { serializeNodes } from 'volto-slate/editor/render';
 
-const Slider = loadable(() => import("react-slick"));
+const Slider = loadable(() => import('react-slick'));
 
 class Carousel extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class Carousel extends Component {
   }
 
   componentDidMount() {
-    require("./css/carousel.less");
+    require('./css/carousel.less');
   }
 
   renderSlide = (cards) => {
@@ -54,16 +54,16 @@ class Carousel extends Component {
             <div className="slide-body">
               {card.link ? (
                 <Link to={card.link}>
-                  <div className="slide-title">{card.title || ""}</div>
+                  <div className="slide-title">{card.title || ''}</div>
                 </Link>
               ) : (
-                <div className="slide-title">{card.title || ""}</div>
+                <div className="slide-title">{card.title || ''}</div>
               )}
               {/* Incomplete backward-compatibility: */}
               {card.text?.data ? (
                 <div
                   className="slide-description"
-                  dangerouslySetInnerHTML={{ __html: card.text?.data || "" }}
+                  dangerouslySetInnerHTML={{ __html: card.text?.data || '' }}
                 />
               ) : (
                 <div className="slide-description">
@@ -117,13 +117,13 @@ class Carousel extends Component {
       autoplaySpeed: 10000,
       slidesToShow: 1,
       slidesToScroll: 1,
-      lazyLoad: "ondemand",
+      lazyLoad: 'ondemand',
     };
 
     return (
       <div
         className={cx(
-          "block align imagecards-block",
+          'block align imagecards-block',
           {
             center: !Boolean(data.align),
           },
@@ -132,7 +132,7 @@ class Carousel extends Component {
       >
         <div
           className={cx({
-            "full-width": data.align === "full",
+            'full-width': data.align === 'full',
           })}
         >
           <div className="slider-wrapper">

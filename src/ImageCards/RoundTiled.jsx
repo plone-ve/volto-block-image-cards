@@ -1,12 +1,12 @@
-import cx from "classnames";
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { settings } from "~/config";
-import { flattenToAppURL } from "@plone/volto/helpers";
-import { Grid } from "semantic-ui-react";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
+import cx from 'classnames';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { settings } from '~/config';
+import { flattenToAppURL } from '@plone/volto/helpers';
+import { Grid } from 'semantic-ui-react';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
-import { fixUrl, getPath } from "./utils";
+import { fixUrl, getPath } from './utils';
 
 // export const getPath = (url) =>
 //   url.startsWith('http') ? new URL(url).pathname : url;
@@ -15,15 +15,15 @@ import { fixUrl, getPath } from "./utils";
 // work on local;
 
 export const thumbUrl = (url) =>
-  (url || "").includes(settings.apiPath)
-    ? `${flattenToAppURL(url.replace("/api", ""))}/@@images/image/preview`
-    : `${url.replace("/api", "")}/@@images/image/preview`;
+  (url || '').includes(settings.apiPath)
+    ? `${flattenToAppURL(url.replace('/api', ''))}/@@images/image/preview`
+    : `${url.replace('/api', '')}/@@images/image/preview`;
 
 export const Card = (props) => {
   const { title, link, attachedimage } = props; // text,
 
   useEffect(() => {
-    require("./css/roundtiled.less");
+    require('./css/roundtiled.less');
   });
 
   return (
@@ -70,7 +70,7 @@ const RoundTiled = ({ data }) => {
   return (
     <div
       className={cx(
-        "block align imagecards-block",
+        'block align imagecards-block',
         {
           center: !Boolean(data.align),
         },
@@ -79,7 +79,7 @@ const RoundTiled = ({ data }) => {
     >
       <div
         className={cx({
-          "full-width": data.align === "full",
+          'full-width': data.align === 'full',
         })}
       >
         <div className="roundtiled">

@@ -4,7 +4,7 @@ First, thinking of the future of Volto addons. Ideally, at one point, there will
 
 Next thing: how to integrate those less files? Load them from the frontend (Volto) theme, or allow addons to include their files?
 
-The way we've done it is to have a file, inside the Volto addon, called ``globals.less``. The content of this file is something like:
+The way we've done it is to have a file, inside the Volto addon, called `globals.less`. The content of this file is something like:
 
 ```less
 /* Expose default fallback variables */
@@ -18,13 +18,15 @@ The way we've done it is to have a file, inside the Volto addon, called ``global
 
 /* Enables customization of addons */
 .loadAddonOverrides() {
-  @import (optional) "@{siteFolder}/@{addon}/@{addontype}s/@{addonelement}.overrides";
+  @import (optional)
+    '@{siteFolder}/@{addon}/@{addontype}s/@{addonelement}.overrides';
 }
 
 /* Helper to load variables */
 .loadAddonVariables() {
-  @import (optional) "@{addonelement}.variables";
-  @import (optional) "@{siteFolder}/@{addon}/@{addontype}s/@{addonelement}.variables";
+  @import (optional) '@{addonelement}.variables';
+  @import (optional)
+    '@{siteFolder}/@{addon}/@{addontype}s/@{addonelement}.variables';
 }
 ```
 
@@ -33,7 +35,7 @@ I'm proposing that, in case the package authors want to compile the less files t
 Notice the two mixins. An addon less file would look like:
 
 ```less
-@import "globals.less";
+@import 'globals.less';
 
 @addon: 'volto-addons';
 @addontype: 'imagecard';
@@ -41,14 +43,17 @@ Notice the two mixins. An addon less file would look like:
 
 .loadAddonVariables();
 
-.title { font-size: @fonSize }
+.title {
+  font-size: @fonSize;
+}
 
 .loadAddonOverrides();
 ```
 
-``loadAddonVariables`` and ``loadAddonOverrides`` could be moved in one of Pastanaga's overrides, maybe ``site.overrides``, or an explicit file that is loaded from overrides (I'm concerned that theme authors will invent new themes and forget to also declare those two mixins).
+`loadAddonVariables` and `loadAddonOverrides` could be moved in one of Pastanaga's overrides, maybe `site.overrides`, or an explicit file that is loaded from overrides (I'm concerned that theme authors will invent new themes and forget to also declare those two mixins).
 
-I have a few suggestions: in ``volto-starter-kit``, inside the ``theme`` folder, ship with a copy of [semantic-ui-less/_site](https://github.com/Semantic-Org/Semantic-UI/tree/master/src/_site), in a folder called ``site``. So, in a Volto project, the structure could be:
+I have a few suggestions: in `volto-starter-kit`, inside the `theme` folder, ship with a copy of [semantic-ui-less/\_site](https://github.com/Semantic-Org/Semantic-UI/tree/master/src/_site), in a folder called `site`. So, in a Volto project, the structure could be:
+
 ```
 `- theme
     `- site
@@ -63,4 +68,3 @@ I have a few suggestions: in ``volto-starter-kit``, inside the ``theme`` folder,
 ```
 
 The "site" folder keeps the theme (and it's more aligned to semantic-ui terminology, because it is not an individual theme, rather it's overrides to the theme specified in theme.config), while the "addons" folder has overrides for addons used by that project.
-

@@ -1,10 +1,10 @@
-import React from "react";
-import { SidebarPortal } from "@plone/volto/components"; // EditBlock
-import InlineForm from "@plone/volto/components/manage/Form/InlineForm";
+import React from 'react';
+import { SidebarPortal } from '@plone/volto/components'; // EditBlock
+import InlineForm from '@plone/volto/components/manage/Form/InlineForm';
 
-import ImageCardsView from "./ImageCardsView";
+import ImageCardsView from './ImageCardsView';
 
-import schema from "./schema";
+import schema from './schema';
 
 const ImageCardEdit = (props) => {
   return (

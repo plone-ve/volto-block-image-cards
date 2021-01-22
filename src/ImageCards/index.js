@@ -1,2 +1,2 @@
-export ImageCardsView from "./ImageCardsView";
-export ImageCardsEdit from "./ImageCardsEdit";
+export ImageCardsView from './ImageCardsView';
+export ImageCardsEdit from './ImageCardsEdit';
