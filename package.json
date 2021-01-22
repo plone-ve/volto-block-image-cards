@@ -17,6 +17,14 @@
     "url": "git@github.com:eea/volto-block-image-cards.git"
   },
   "dependencies": {
+    "react-lazy-load-image-component": "^1.4.0",
+    "react-slick": "^0.24.0",
+    "slick-carousel": "^1.8.1",
+    "volto-slate": "1.0.7"
+  },
+  "peerDependencies": {
+    "react-loadable": "5.5.0",
+    "classnames": "2.2.6"
   },
   "scripts": {
     "release": "release-it",
