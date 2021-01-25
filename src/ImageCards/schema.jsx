@@ -62,9 +62,10 @@ const ImageCards = {
       ],
     },
     cards: {
-      widget: 'objectlist',
+      widget: 'object_list',
       title: 'Images',
       // this is an invention, should confront with dexterity serializer
+      description: 'Add a list of Images as Carousel Items',
       schema: ImageCard,
     },
     align: {
