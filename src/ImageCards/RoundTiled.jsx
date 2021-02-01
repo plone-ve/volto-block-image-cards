@@ -1,12 +1,11 @@
 import cx from 'classnames';
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { settings } from '~/config';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { Grid } from 'semantic-ui-react';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
-import { fixUrl, getPath } from './utils';
+import { fixUrl, getPath, ExtLink } from './utils';
 
 // export const getPath = (url) =>
 //   url.startsWith('http') ? new URL(url).pathname : url;
@@ -30,7 +29,7 @@ export const Card = (props) => {
     <div className="card">
       {link ? (
         <>
-          <Link to={link}>
+          <ExtLink to={link}>
             <LazyLoadComponent>
               <div
                 className="card-image"
@@ -46,7 +45,7 @@ export const Card = (props) => {
               ></div>
             </LazyLoadComponent>
             <span className="card-title">{title}</span>
-          </Link>
+          </ExtLink>
         </>
       ) : (
         <>

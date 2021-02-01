@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import loadable from '@loadable/component';
 import { Icon } from '@plone/volto/components';
-import { Link } from 'react-router-dom';
 
 import leftSVG from '@plone/volto/icons/left-key.svg';
 import rightSVG from '@plone/volto/icons/right-key.svg';
 import cx from 'classnames';
 
 import 'slick-carousel/slick/slick.css';
-import { fixUrl, getPath } from './utils';
+import { fixUrl, getPath, ExtLink } from './utils';
 
 import { serializeNodes } from 'volto-slate/editor/render';
 
@@ -53,9 +52,9 @@ class Carousel extends Component {
           <div className="ui container">
             <div className="slide-body">
               {card.link ? (
-                <Link to={card.link}>
+                <ExtLink to={card.link}>
                   <div className="slide-title">{card.title || ''}</div>
-                </Link>
+                </ExtLink>
               ) : (
                 <div className="slide-title">{card.title || ''}</div>
               )}
