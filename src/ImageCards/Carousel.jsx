@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import loadable from '@loadable/component';
-import { Icon } from '@plone/volto/components';
-import { Link } from 'react-router-dom';
+import { Icon, UniversalLink } from '@plone/volto/components';
 
 import leftSVG from '@plone/volto/icons/left-key.svg';
 import rightSVG from '@plone/volto/icons/right-key.svg';
@@ -53,9 +52,9 @@ class Carousel extends Component {
           <div className="ui container">
             <div className="slide-body">
               {card.link ? (
-                <Link to={card.link}>
+                <UniversalLink href={card.link}>
                   <div className="slide-title">{card.title || ''}</div>
-                </Link>
+                </UniversalLink>
               ) : (
                 <div className="slide-title">{card.title || ''}</div>
               )}

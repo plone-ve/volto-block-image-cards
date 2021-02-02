@@ -1,10 +1,10 @@
 import cx from 'classnames';
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { settings } from '~/config';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { Grid } from 'semantic-ui-react';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import { UniversalLink } from '@plone/volto/components';
 
 import { fixUrl, getPath } from './utils';
 
@@ -30,7 +30,7 @@ export const Card = (props) => {
     <div className="card">
       {link ? (
         <>
-          <Link to={link}>
+          <UniversalLink href={link}>
             <LazyLoadComponent>
               <div
                 className="card-image"
@@ -46,7 +46,7 @@ export const Card = (props) => {
               ></div>
             </LazyLoadComponent>
             <span className="card-title">{title}</span>
-          </Link>
+          </UniversalLink>
         </>
       ) : (
         <>
