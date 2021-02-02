@@ -52,7 +52,7 @@ class Carousel extends Component {
           <div className="ui container">
             <div className="slide-body">
               {card.link ? (
-                <UniversalLink to={card.link}>
+                <UniversalLink href={card.link}>
                   <div className="slide-title">{card.title || ''}</div>
                 </UniversalLink>
               ) : (

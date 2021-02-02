@@ -30,7 +30,7 @@ export const Card = (props) => {
     <div className="card">
       {link ? (
         <>
-          <UniversalLink to={link}>
+          <UniversalLink href={link}>
             <LazyLoadComponent>
               <div
                 className="card-image"
