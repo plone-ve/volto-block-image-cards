@@ -4,8 +4,9 @@ import { settings } from '~/config';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { Grid } from 'semantic-ui-react';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import { UniversalLink } from '@plone/volto/components';
 
-import { fixUrl, getPath, ExtLink } from './utils';
+import { fixUrl, getPath } from './utils';
 
 // export const getPath = (url) =>
 //   url.startsWith('http') ? new URL(url).pathname : url;
@@ -29,7 +30,7 @@ export const Card = (props) => {
     <div className="card">
       {link ? (
         <>
-          <ExtLink to={link}>
+          <UniversalLink to={link}>
             <LazyLoadComponent>
               <div
                 className="card-image"
@@ -45,7 +46,7 @@ export const Card = (props) => {
               ></div>
             </LazyLoadComponent>
             <span className="card-title">{title}</span>
-          </ExtLink>
+          </UniversalLink>
         </>
       ) : (
         <>
