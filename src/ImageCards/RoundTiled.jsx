@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { settings } from '~/config';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { Grid } from 'semantic-ui-react';
@@ -7,6 +7,8 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { UniversalLink } from '@plone/volto/components';
 
 import { fixUrl, getPath } from './utils';
+
+import './css/roundtiled.less';
 
 // export const getPath = (url) =>
 //   url.startsWith('http') ? new URL(url).pathname : url;
@@ -20,17 +22,13 @@ export const thumbUrl = (url) =>
     : `${url.replace('/api', '')}/@@images/image/preview`;
 
 export const Card = (props) => {
-  const { title, link, attachedimage } = props; // text,
-
-  useEffect(() => {
-    require('./css/roundtiled.less');
-  });
+  const { title, link, attachedimage } = props;
 
   return (
     <div className="card">
       {link ? (
         <>
-          <UniversalLink href={link}>
+          <UniversalLink className={'card-link'} href={link}>
             <LazyLoadComponent>
               <div
                 className="card-image"
@@ -82,8 +80,8 @@ const RoundTiled = ({ data }) => {
           'full-width': data.align === 'full',
         })}
       >
-        <div className="roundtiled">
-          <h2>{title}</h2>
+        <div className={'roundtiled'}>
+          <h2 className={'roundtiled-title'}>{title}</h2>
           <div className="cards">
             <Grid>
               {(cards || []).map((card, i) => (

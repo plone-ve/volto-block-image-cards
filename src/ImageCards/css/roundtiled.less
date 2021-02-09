@@ -6,56 +6,61 @@
 
 .loadAddonVariables();
 
-& {
-  .imagecards-block {
-    div {
-      .roundtiled {
-        margin-bottom: 1em !important;
-        text-align: center;
+.roundtiled {
+  margin-bottom: @roundTiledMarginBottom;
+  text-align: @roundTiledTextAlign;
+}
 
-        h2 {
-          margin-top: 2em;
-          margin-bottom: 1em;
-          font-size: 44px;
-        }
+.roundtiled-title {
+  margin-top: @roundTiledTitleMarginTop;
+  margin-bottom: @roundTiledTitleMarginBottom;
+  font-size: @roundTiledTitleFontSize;
+}
 
-        .cards {
-          display: flex;
-          flex-flow: wrap;
-
-          .card {
-            // width: 25%;
-            margin-bottom: 3rem;
-
-            .card-image {
-              position: relative;
-              overflow: hidden;
-              width: 10rem;
-              height: 10rem;
-              margin: 0 auto;
-              background-position: center;
-              background-repeat: no-repeat !important;
-              background-size: cover;
-              border-radius: 50%;
-            }
-
-            .card-title {
-              display: inline-block;
-              margin-top: 2rem;
-              color: #333;
-              font-family: @pageFont;
-              font-size: 22px;
-              font-weight: normal;
-            }
-
-            > a:hover .card-title {
-              text-decoration: underline;
-            }
-          }
-        }
-      }
-    }
+.imagecards-block {
+  .cards {
+    display: flex;
+    flex-flow: wrap;
   }
+  .card {
+    margin-bottom: @cardMarginBottom;
+  }
+
+  .card-image {
+    position: relative;
+    overflow: hidden;
+    width: @cardImageWidth;
+    height: @cardImageHeight;
+    margin: @cardImageMargin;
+    background-position: center;
+    background-repeat: no-repeat !important;
+    background-size: cover;
+    border-radius: @cardImageBorderRadius;
+  }
+
+  .card-title {
+    display: inline-block;
+    margin-top: @cardTitleMarginTop;
+    color: @cardTitleColor;
+    font-family: @cardTitleFontFamily;
+    font-size: @cardTitleFontSize;
+    font-weight: @cardTitleFontWeight;
+  }
+
+  > .card-link:hover .card-title {
+    text-decoration: @cardTitleDecoration;
+  }
+}
+
+.center .card-title {
+  text-align: center;
+}
+
+.left .card-title {
+  text-align: left;
+}
+.right .card-title {
+  text-align: right;
 }
 
 .loadAddonOverrides();
