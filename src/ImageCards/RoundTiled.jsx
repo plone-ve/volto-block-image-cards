@@ -83,7 +83,7 @@ const RoundTiled = ({ data }) => {
         <div className={'roundtiled'}>
           <h2 className={'roundtiled-title'}>{title}</h2>
           <div className="cards">
-            <Grid>
+            <Grid className={'cards-grid'}>
               {(cards || []).map((card, i) => (
                 <Grid.Column key={i} mobile={12} tablet={6} computer={3}>
                   <Card {...card} />

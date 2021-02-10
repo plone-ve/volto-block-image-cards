@@ -5,6 +5,8 @@
 @roundTiledTitleMarginBottom: 1rem;
 @roundTiledTitleFontSize: 44px;
 
+@cardsWidth: 100%;
+
 @cardMarginBottom: 3rem;
 
 @cardImageWidth: 10rem;
