@@ -5,6 +5,7 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 import { Grid } from 'semantic-ui-react';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { UniversalLink } from '@plone/volto/components';
+import { BodyClass } from '@plone/volto/helpers';
 
 import { fixUrl, getPath } from './utils';
 
@@ -75,6 +76,7 @@ const RoundTiled = ({ data }) => {
         data.align,
       )}
     >
+      <BodyClass className="has-card-tiles" />
       <div
         className={cx({
           'full-width': data.align === 'full',

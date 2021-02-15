@@ -12,6 +12,7 @@ import './css/carousel.less';
 import { fixUrl, getPath } from './utils';
 
 import { serializeNodes } from 'volto-slate/editor/render';
+import { BodyClass } from '@plone/volto/helpers';
 
 const Slider = loadable(() => import('react-slick'));
 
@@ -127,6 +128,7 @@ class Carousel extends Component {
           data.align,
         )}
       >
+        <BodyClass className="has-carousel" />
         <div
           className={cx({
             'full-width': data.align === 'full',
@@ -136,7 +138,7 @@ class Carousel extends Component {
             <Slider {...settings} ref={(slider) => (this.slider = slider)}>
               {this.renderSlide(cards)}
             </Slider>
-            {this.renderSlideArrows()}
+            {cards.length > 1 && this.renderSlideArrows()}
           </div>
         </div>
       </div>
