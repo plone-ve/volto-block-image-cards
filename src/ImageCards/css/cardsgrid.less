@@ -1,0 +1,76 @@
+@import 'globals.less';
+
+@addon: 'volto-addons';
+@addontype: 'imagecard';
+@addonelement: 'cardsgrid';
+
+.loadAddonVariables();
+
+.cardsgrid {
+  margin-bottom: @cardsGridMarginBottom;
+  text-align: @cardsGridTextAlign;
+}
+
+.cardsgrid-title {
+  margin-top: @cardsGridTitleMarginTop;
+  margin-bottom: @cardsGridTitleMarginBottom;
+  font-size: @cardsGridTitleFontSize;
+}
+
+.imagecards-block {
+  .cards {
+    display: flex;
+    flex-flow: wrap;
+  }
+
+  .cards-grid {
+    width: @cardsWidth;
+  }
+
+  .card {
+    margin-bottom: @cardMarginBottom;
+  }
+
+  .card-link {
+    display: block;
+  }
+
+  .card-image {
+    position: relative;
+    overflow: hidden;
+    width: @cardImageWidth;
+    height: @cardImageHeight;
+    margin: @cardImageMargin;
+    background-position: center;
+    background-repeat: no-repeat !important;
+    background-size: cover;
+    border-radius: @cardImageBorderRadius;
+  }
+
+  .card-title {
+    display: inline-block;
+    margin-top: @cardTitleMarginTop;
+    color: @cardTitleColor;
+    font-family: @cardTitleFontFamily;
+    font-size: @cardTitleFontSize;
+    font-weight: @cardTitleFontWeight;
+  }
+
+  > .card-link:hover .card-title {
+    text-decoration: @cardTitleDecoration;
+  }
+}
+
+.center .card-title {
+  text-align: center;
+}
+
+.left .card-title {
+  text-align: left;
+}
+
+.right .card-title {
+  text-align: right;
+}
+
+.loadAddonOverrides();

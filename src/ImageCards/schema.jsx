@@ -58,6 +58,7 @@ const ImageCards = {
       title: 'Display',
       choices: [
         ['round_tiled', 'Round Tiled'],
+        ['cards_grid', 'Cards grid'],
         ['carousel', 'Carousel'],
       ],
     },
