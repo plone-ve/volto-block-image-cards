@@ -18,7 +18,7 @@ const ImageCard = {
       title: 'Text',
     },
     link: {
-      widget: 'object_by_path',
+      widget: 'object_by_list',
       title: 'Link',
     },
     attachedimage: {
