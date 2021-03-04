@@ -18,10 +18,27 @@ export const thumbUrl = (url) =>
     : `${url.replace('/api', '')}/@@images/image/preview`;
 
 export const Card = (props) => {
-  const { title, text, link, attachedimage } = props;
+  const {
+    title,
+    text,
+    link,
+    attachedimage,
+    background_color,
+    text_color,
+  } = props;
 
   return (
-    <div className="ui card">
+    <div
+      className="ui card"
+      style={
+        background_color
+          ? {
+              backgroundColor: `${background_color}`,
+              color: `${text_color}`,
+            }
+          : {}
+      }
+    >
       {link ? (
         <>
           {attachedimage && (

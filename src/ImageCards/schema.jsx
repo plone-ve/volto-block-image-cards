@@ -1,10 +1,20 @@
+import config from '@plone/volto/registry';
+
 const ImageCard = {
   title: 'Image Card',
   fieldsets: [
     {
       id: 'default',
       title: 'Default',
-      fields: ['title', 'text', 'attachedimage', 'link', 'copyright'],
+      fields: [
+        'title',
+        'text',
+        'attachedimage',
+        'link',
+        'copyright',
+        'background_color',
+        'text_color',
+      ],
     },
   ],
 
@@ -28,6 +38,18 @@ const ImageCard = {
     copyright: {
       widget: 'slate_richtext',
       title: 'Copyright',
+    },
+    text_color: {
+      widget: 'style_simple_color',
+      title: 'Card Text color',
+      type: 'color',
+      available_colors: config.settings?.available_colors,
+    },
+    background_color: {
+      widget: 'style_simple_color',
+      title: 'Card Background color',
+      type: 'color',
+      available_colors: config.settings?.available_colors,
     },
   },
 
