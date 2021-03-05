@@ -13,6 +13,20 @@ export default (config) => {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
+    display_types: {
+      round_tiled: {
+        title: 'Round Tile',
+        schema: null,
+      },
+      cards_grid: {
+        title: 'Cards grid',
+        schema: null,
+      },
+      carousel: {
+        title: 'Carousel',
+        schema: null,
+      },
+    },
     security: {
       addPermission: [],
       view: [],

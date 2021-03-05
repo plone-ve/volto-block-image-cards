@@ -4,9 +4,10 @@ import InlineForm from '@plone/volto/components/manage/Form/InlineForm';
 
 import ImageCardsView from './ImageCardsView';
 
-import schema from './schema';
+import image_schema from './schema';
 
 const ImageCardEdit = (props) => {
+  const schema = image_schema();
   return (
     <>
       <ImageCardsView data={props.data} />
