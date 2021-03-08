@@ -2,6 +2,10 @@ import codeSVG from '@plone/volto/icons/code.svg';
 import { ImageCardsView, ImageCardsEdit } from './ImageCards';
 import AttachedImageWidget from './ImageCards/AttachedImageWidget';
 
+import RoundTiled from './ImageCards/RoundTiled';
+import Carousel from './ImageCards/Carousel';
+import CardsGrid from './ImageCards/CardsGrid';
+
 export default (config) => {
   config.blocks.blocksConfig.imagecards = {
     id: 'imagecards',
@@ -13,18 +17,21 @@ export default (config) => {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    display_types: {
+    blockRenderers: {
+      cards_grid: {
+        title: 'Colored Cards',
+        schema: null,
+        view: CardsGrid,
+      },
       round_tiled: {
         title: 'Round Tile',
         schema: null,
-      },
-      cards_grid: {
-        title: 'Cards grid',
-        schema: null,
+        view: RoundTiled,
       },
       carousel: {
         title: 'Carousel',
         schema: null,
+        view: Carousel,
       },
     },
     security: {

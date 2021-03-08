@@ -6,15 +6,7 @@ const ImageCard = () => ({
     {
       id: 'default',
       title: 'Default',
-      fields: [
-        'title',
-        'text',
-        'attachedimage',
-        'link',
-        'copyright',
-        'background_color',
-        'text_color',
-      ],
+      fields: ['title', 'text', 'attachedimage', 'link', 'copyright'],
     },
   ],
 
@@ -39,28 +31,14 @@ const ImageCard = () => ({
       widget: 'slate_richtext',
       title: 'Copyright',
     },
-    text_color: {
-      widget: 'style_simple_color',
-      title: 'Card Text color',
-      type: 'color',
-      available_colors: config.settings.available_colors,
-    },
-    background_color: {
-      widget: 'style_simple_color',
-      title: 'Card Background color',
-      type: 'color',
-      available_colors: config.settings.available_colors,
-      field_props: {
-        available_colors: config.settings.available_colors,
-      },
-    },
   },
 
   required: ['attachedimage'],
 });
 
 const ImageCards = () => {
-  const display_types_obj = config.blocks.blocksConfig.imagecards.display_types;
+  const display_types_obj =
+    config.blocks.blocksConfig.imagecards.blockRenderers;
   const display_choices = [];
   const display_types_ids = Object.keys(display_types_obj);
   display_types_ids.forEach(function (value) {
