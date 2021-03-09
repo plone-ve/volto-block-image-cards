@@ -4,7 +4,6 @@ import AttachedImageWidget from './ImageCards/AttachedImageWidget';
 
 import RoundTiled from './ImageCards/RoundTiled';
 import Carousel from './ImageCards/Carousel';
-import CardsGrid from './ImageCards/CardsGrid';
 
 export default (config) => {
   config.blocks.blocksConfig.imagecards = {
@@ -18,11 +17,6 @@ export default (config) => {
     mostUsed: false,
     sidebarTab: 1,
     blockRenderers: {
-      cards_grid: {
-        title: 'Colored Cards',
-        schema: null,
-        view: CardsGrid,
-      },
       round_tiled: {
         title: 'Round Tile',
         schema: null,
