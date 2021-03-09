@@ -36,14 +36,13 @@ const ImageCard = () => ({
   required: ['attachedimage'],
 });
 
-const ImageCards = () => {
+const ImageCards = (props) => {
   const display_types_obj =
     config.blocks.blocksConfig.imagecards.blockRenderers;
-  const display_choices = [];
-  const display_types_ids = Object.keys(display_types_obj);
-  display_types_ids.forEach(function (value) {
-    display_choices.push([value, display_types_obj[value].title]);
-  });
+  const selected_renderer = props && props.data.display;
+  const schema =
+    (selected_renderer && display_types_obj[selected_renderer].schema) ||
+    ImageCard;
 
   return {
     title: 'Image Cards',
@@ -67,14 +66,14 @@ const ImageCards = () => {
       },
       display: {
         title: 'Display',
-        choices: display_choices,
+        choices: [],
       },
       cards: {
         widget: 'object_list',
         title: 'Images',
         // this is an invention, should confront with dexterity serializer
         description: 'Add a list of Images as Carousel Items',
-        schema: ImageCard(),
+        schema: schema(),
       },
       align: {
         title: 'Alignment',
