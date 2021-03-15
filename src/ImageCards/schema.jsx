@@ -69,7 +69,7 @@ const ImageCards = (props) => {
         choices: [],
       },
       cards: {
-        widget: 'object_list',
+        widget: 'object_list_inline',
         title: 'Images',
         // this is an invention, should confront with dexterity serializer
         description: 'Add a list of Images as Carousel Items',
