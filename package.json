@@ -21,11 +21,11 @@
     "@eeacms/volto-object-widget"
   ],
   "dependencies": {
-    "@eeacms/volto-object-widget": "eea/volto-object-widget",
+    "@eeacms/volto-object-widget": "^2.0.0",
     "react-lazy-load-image-component": "^1.4.0",
     "react-slick": "^0.24.0",
     "slick-carousel": "^1.8.1",
-    "volto-slate": "1.0.7"
+    "volto-slate": "^2.0.0"
   },
   "peerDependencies": {
     "classnames": "2.2.6",
