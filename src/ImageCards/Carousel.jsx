@@ -42,7 +42,7 @@ class Carousel extends Component {
                 ? {
                     backgroundImage: `url(${getScaleUrl(
                       getPath(card.attachedimage),
-                      props.image_scale || 'panoramic',
+                      props.image_scale || 'large',
                     )})`,
                   }
                 : {}
