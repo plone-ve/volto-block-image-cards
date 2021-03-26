@@ -1,7 +1,5 @@
 import cx from 'classnames';
 import React from 'react';
-import config from '@plone/volto/registry';
-import { flattenToAppURL } from '@plone/volto/helpers';
 import { Grid } from 'semantic-ui-react';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { UniversalLink } from '@plone/volto/components';
