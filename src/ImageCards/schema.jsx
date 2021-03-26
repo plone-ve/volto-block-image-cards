@@ -51,7 +51,7 @@ const ImageCards = (props) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['title', 'text', 'display', 'align', 'cards'],
+        fields: ['title', 'text', 'display', 'align', 'cards', 'image_scale'],
       },
     ],
 
@@ -71,9 +71,14 @@ const ImageCards = (props) => {
       cards: {
         widget: 'object_list_inline',
         title: 'Images',
-        // this is an invention, should confront with dexterity serializer
         description: 'Add a list of Images as Carousel Items',
         schema: schema(),
+      },
+
+      image_scale: {
+        type: 'string',
+        title: 'Image scale',
+        default: 'panoramic',
       },
       align: {
         title: 'Alignment',

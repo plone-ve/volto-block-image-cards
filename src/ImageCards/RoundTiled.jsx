@@ -7,23 +7,12 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { UniversalLink } from '@plone/volto/components';
 import { BodyClass } from '@plone/volto/helpers';
 
-import { fixUrl, getPath } from './utils';
+import { getScaleUrl, getPath } from './utils';
 
 import './css/roundtiled.less';
 
-// export const getPath = (url) =>
-//   url.startsWith('http') ? new URL(url).pathname : url;
-
-// TODO: the approach for the URL path generation is not correct, it does not
-// work on local;
-
-export const thumbUrl = (url) =>
-  (url || '').includes(config.settings.apiPath)
-    ? `${flattenToAppURL(url.replace('/api', ''))}/@@images/image/preview`
-    : `${url.replace('/api', '')}/@@images/image/preview`;
-
 export const Card = (props) => {
-  const { title, link, attachedimage } = props;
+  const { title, link, attachedimage, image_scale } = props;
 
   return (
     <div className="card">
@@ -36,8 +25,9 @@ export const Card = (props) => {
                 style={
                   attachedimage
                     ? {
-                        backgroundImage: `url(${fixUrl(
+                        backgroundImage: `url(${getScaleUrl(
                           getPath(attachedimage),
+                          image_scale || 'preview',
                         )})`,
                       }
                     : {}
@@ -53,7 +43,10 @@ export const Card = (props) => {
             <div
               className="card-image"
               style={{
-                backgroundImage: `url(${thumbUrl(getPath(attachedimage))})`,
+                backgroundImage: `url(${getScaleUrl(
+                  getPath(attachedimage),
+                  image_scale || 'preview',
+                )})`,
               }}
             ></div>
           </LazyLoadComponent>
@@ -65,7 +58,7 @@ export const Card = (props) => {
 };
 
 const RoundTiled = ({ data }) => {
-  const { title, cards } = data;
+  const { title, cards, image_scale } = data;
   return (
     <div
       className={cx(
@@ -88,7 +81,7 @@ const RoundTiled = ({ data }) => {
             <Grid className={'cards-grid'}>
               {(cards || []).map((card, i) => (
                 <Grid.Column key={i} mobile={12} tablet={6} computer={3}>
-                  <Card {...card} />
+                  <Card {...card} image_scale={image_scale} />
                 </Grid.Column>
               ))}
             </Grid>

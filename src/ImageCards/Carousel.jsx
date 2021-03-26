@@ -9,7 +9,7 @@ import cx from 'classnames';
 import 'slick-carousel/slick/slick.css';
 import './css/carousel.less';
 
-import { fixUrl, getPath } from './utils';
+import { getScaleUrl, getPath } from './utils';
 
 import { serializeNodes } from 'volto-slate/editor/render';
 import { BodyClass } from '@plone/volto/helpers';
@@ -31,7 +31,7 @@ class Carousel extends Component {
     this.slider.slickPrev();
   }
 
-  renderSlide = (cards) => {
+  renderSlide = (cards, props) => {
     return cards.map((card, index) => {
       return (
         <div className="slider-slide" key={index}>
@@ -40,8 +40,9 @@ class Carousel extends Component {
             style={
               card.attachedimage
                 ? {
-                    backgroundImage: `url(${fixUrl(
+                    backgroundImage: `url(${getScaleUrl(
                       getPath(card.attachedimage),
+                      props.image_scale || 'panoramic',
                     )})`,
                   }
                 : {}
@@ -136,7 +137,7 @@ class Carousel extends Component {
         >
           <div className="slider-wrapper">
             <Slider {...settings} ref={(slider) => (this.slider = slider)}>
-              {this.renderSlide(cards)}
+              {this.renderSlide(cards, data)}
             </Slider>
             {cards.length > 1 && this.renderSlideArrows()}
           </div>
