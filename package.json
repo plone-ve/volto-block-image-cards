@@ -22,6 +22,7 @@
   ],
   "dependencies": {
     "@eeacms/volto-object-widget": "^2.0.0",
+    "@eeacms/volto-block-image-cards": "eea/volto-block-image-cards#master",
     "react-lazy-load-image-component": "^1.4.0",
     "react-slick": "^0.24.0",
     "slick-carousel": "^1.8.1",

@@ -1,5 +1,10 @@
 import codeSVG from '@plone/volto/icons/code.svg';
+import React from 'react';
 import { ImageCardsView, ImageCardsEdit } from './ImageCards';
+import {
+  BlockStyleWrapperEdit,
+  BlockStyleWrapperView,
+} from '@eeacms/volto-block-style/BlockStyleWrapper';
 import AttachedImageWidget from './ImageCards/AttachedImageWidget';
 
 import RoundTiled from './ImageCards/RoundTiled';
@@ -11,8 +16,16 @@ export default (config) => {
     title: 'Image Cards',
     icon: codeSVG,
     group: 'common',
-    view: ImageCardsView,
-    edit: ImageCardsEdit,
+    view: (props) => (
+      <BlockStyleWrapperView {...props}>
+        <ImageCardsView {...props} />
+      </BlockStyleWrapperView>
+    ),
+    edit: (props) => (
+      <BlockStyleWrapperEdit {...props}>
+        <ImageCardsEdit {...props} />
+      </BlockStyleWrapperEdit>
+    ),
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
