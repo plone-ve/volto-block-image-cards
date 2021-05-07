@@ -8,6 +8,7 @@ import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import { createContent } from '@plone/volto/actions';
 import { FormFieldWrapper } from '@plone/volto/components';
+import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
 import { v4 as uuid } from 'uuid';
 
 export const thumbUrl = (url, preview_size) => {
@@ -114,43 +115,43 @@ export class UnconnectedAttachedImageWidget extends Component {
 
     return (
       <FormFieldWrapper {...this.props}>
-        <div>
-          <Dropzone onDrop={this.onDrop} className="dropzone">
-            {({ getRootProps, getInputProps }) => {
-              return (
-                <Message {...getRootProps()}>
-                  {this.state.uploading && (
-                    <Dimmer active>
-                      <Loader indeterminate>Uploading</Loader>
-                    </Dimmer>
-                  )}
-                  <center>
-                    <Item>
-                      <input {...getInputProps()} />
-                      {value ? (
-                        <Item.Image
-                          src={flattenToAppURL(thumbUrl(value, preview_size))}
-                        />
-                      ) : (
-                        <>
-                          <img src={imageBlockSVG} alt="" />
-                          <div className="discreet">
-                            Click or drag file here
-                          </div>
-                        </>
-                      )}
-                    </Item>
-                  </center>
-                </Message>
-              );
-            }}
-          </Dropzone>
-          {this.state.errorMessage && this.state.errorMessage && (
-            <Label basic color="red" pointing>
-              {this.state.errorMessage}
-            </Label>
-          )}
+        <Dropzone onDrop={this.onDrop} className="dropzone">
+          {({ getRootProps, getInputProps }) => {
+            return (
+              <Message {...getRootProps()}>
+                {this.state.uploading && (
+                  <Dimmer active>
+                    <Loader indeterminate>Uploading</Loader>
+                  </Dimmer>
+                )}
+                <center>
+                  <Item>
+                    <input {...getInputProps()} />
+                    {value ? (
+                      <Item.Image
+                        src={flattenToAppURL(thumbUrl(value, preview_size))}
+                      />
+                    ) : (
+                      <>
+                        <img src={imageBlockSVG} alt="" />
+                        <div className="discreet">Click or drag file here</div>
+                      </>
+                    )}
+                  </Item>
+                </center>
+              </Message>
+            );
+          }}
+        </Dropzone>
+        <div className="wrapper">
+          <UrlWidget {...this.props} wrapped={false} />
         </div>
+
+        {this.state.errorMessage && this.state.errorMessage && (
+          <Label basic color="red" pointing>
+            {this.state.errorMessage}
+          </Label>
+        )}
       </FormFieldWrapper>
     );
   }

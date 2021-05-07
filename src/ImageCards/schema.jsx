@@ -20,7 +20,7 @@ const ImageCard = () => ({
       title: 'Text',
     },
     link: {
-      widget: 'object_by_list',
+      widget: 'url',
       title: 'Link',
     },
     attachedimage: {
@@ -51,7 +51,7 @@ const ImageCards = (props) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['title', 'text', 'display', 'align', 'cards', 'image_scale'],
+        fields: ['title', 'text', 'display', 'align', 'image_scale', 'cards'],
       },
     ],
 
