@@ -69,7 +69,7 @@ const ImageCards = (props) => {
         choices: [],
       },
       cards: {
-        widget: 'object_list_inline',
+        widget: 'object_list',
         title: 'Images',
         description: 'Add a list of Images as Carousel Items',
         schema: schema(),
