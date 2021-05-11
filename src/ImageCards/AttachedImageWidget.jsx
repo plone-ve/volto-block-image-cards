@@ -128,10 +128,11 @@ export class UnconnectedAttachedImageWidget extends Component {
           <div>
             <span className="image-wrapper">
               <Button
+                basic
                 className="remove-image"
                 onClick={() => onChange(value, undefined)}
               >
-                <Icon name={clearSVG} size="20px" />
+                <Icon className="circled" name={clearSVG} size="20px" />
               </Button>
               <Item.Image
                 src={flattenToAppURL(thumbUrl(value, preview_size))}
@@ -161,9 +162,7 @@ export class UnconnectedAttachedImageWidget extends Component {
           </Dropzone>
         )}
 
-        <div className="wrapper">
-          <UrlWidget {...this.props} wrapped={false} />
-        </div>
+        <UrlWidget {...this.props} wrapped={false} />
 
         {this.state.errorMessage && this.state.errorMessage && (
           <Label basic color="red" pointing>
