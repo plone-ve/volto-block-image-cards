@@ -120,24 +120,26 @@ export class UnconnectedAttachedImageWidget extends Component {
   }
 
   render() {
-    const { value, preview_size = 'thumb', onChange } = this.props;
+    const { value, preview_size = 'preview', onChange } = this.props;
 
     return (
-      <FormFieldWrapper {...this.props}>
+      <FormFieldWrapper className="wide" {...this.props}>
         {value ? (
-          <div>
-            <span className="image-wrapper">
-              <Button
-                basic
-                className="remove-image"
-                onClick={() => onChange(value, undefined)}
-              >
-                <Icon className="circled" name={clearSVG} size="20px" />
-              </Button>
-              <Item.Image
-                src={flattenToAppURL(thumbUrl(value, preview_size))}
-              />
-            </span>
+          <div
+            className="image-wrapper"
+            style={{
+              backgroundImage: `url(${flattenToAppURL(
+                thumbUrl(value, preview_size),
+              )})`,
+            }}
+          >
+            <Button
+              basic
+              className="remove-image"
+              onClick={() => onChange(value, undefined)}
+            >
+              <Icon className="circled" name={clearSVG} size="20px" />
+            </Button>
           </div>
         ) : (
           <Dropzone onDrop={this.onDrop} className="dropzone">
