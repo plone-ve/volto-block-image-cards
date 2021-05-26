@@ -1,14 +1,24 @@
 import { readAsDataURL } from 'promise-file-reader';
 import { connect } from 'react-redux';
-import { Dimmer, Loader, Item, Message, Label } from 'semantic-ui-react';
+import {
+  Dimmer,
+  Loader,
+  Item,
+  Message,
+  Label,
+  Button,
+} from 'semantic-ui-react';
 import Dropzone from 'react-dropzone';
 import React, { Component } from 'react';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import { createContent } from '@plone/volto/actions';
-import { FormFieldWrapper } from '@plone/volto/components';
+import { FormFieldWrapper, Icon } from '@plone/volto/components';
+import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
 import { v4 as uuid } from 'uuid';
+
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 export const thumbUrl = (url, preview_size) => {
   return `${url}/@@images/image/${preview_size}`;
@@ -110,11 +120,28 @@ export class UnconnectedAttachedImageWidget extends Component {
   }
 
   render() {
-    const { value, preview_size = 'thumb' } = this.props;
+    const { value, preview_size = 'preview', onChange } = this.props;
 
     return (
-      <FormFieldWrapper {...this.props}>
-        <div>
+      <FormFieldWrapper className="wide" {...this.props}>
+        {value ? (
+          <div
+            className="image-wrapper"
+            style={{
+              backgroundImage: `url(${flattenToAppURL(
+                thumbUrl(value, preview_size),
+              )})`,
+            }}
+          >
+            <Button
+              basic
+              className="remove-image"
+              onClick={() => onChange(value, undefined)}
+            >
+              <Icon className="circled" name={clearSVG} size="20px" />
+            </Button>
+          </div>
+        ) : (
           <Dropzone onDrop={this.onDrop} className="dropzone">
             {({ getRootProps, getInputProps }) => {
               return (
@@ -127,30 +154,23 @@ export class UnconnectedAttachedImageWidget extends Component {
                   <center>
                     <Item>
                       <input {...getInputProps()} />
-                      {value ? (
-                        <Item.Image
-                          src={flattenToAppURL(thumbUrl(value, preview_size))}
-                        />
-                      ) : (
-                        <>
-                          <img src={imageBlockSVG} alt="" />
-                          <div className="discreet">
-                            Click or drag file here
-                          </div>
-                        </>
-                      )}
+                      <img src={imageBlockSVG} alt="" />
+                      <div className="discreet">Click or drag file here</div>
                     </Item>
                   </center>
                 </Message>
               );
             }}
           </Dropzone>
-          {this.state.errorMessage && this.state.errorMessage && (
-            <Label basic color="red" pointing>
-              {this.state.errorMessage}
-            </Label>
-          )}
-        </div>
+        )}
+
+        <UrlWidget {...this.props} wrapped={false} />
+
+        {this.state.errorMessage && this.state.errorMessage && (
+          <Label basic color="red" pointing>
+            {this.state.errorMessage}
+          </Label>
+        )}
       </FormFieldWrapper>
     );
   }
