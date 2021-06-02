@@ -23,9 +23,14 @@ const tweakSchema = (schema, data) => {
 
 const ImageCardEdit = (props) => {
   const schema = tweakSchema(image_schema(props), props.data);
+  const display = props.data.display || 'carousel';
+  const CardsView =
+    config.blocks.blocksConfig.imagecards.blockRenderers?.[display]?.edit ||
+    ImageCardsView;
+
   return (
     <>
-      <ImageCardsView data={props.data} />
+      <CardsView data={props.data} />
 
       <SidebarPortal selected={props.selected}>
         <InlineForm
