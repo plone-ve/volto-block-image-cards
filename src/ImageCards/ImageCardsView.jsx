@@ -10,7 +10,7 @@ const ImageCardView = (props) => {
   });
 
   const Impl = byDisplayType[props.data.display || 'carousel'];
-  return <Impl {...props} />;
+  return Impl ? <Impl {...props} /> : '';
 };
 
 export default ImageCardView;
