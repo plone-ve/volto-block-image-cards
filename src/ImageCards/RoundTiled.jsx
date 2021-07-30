@@ -40,12 +40,16 @@ export const Card = (props) => {
           <LazyLoadComponent>
             <div
               className="card-image"
-              style={{
-                backgroundImage: `url(${getScaleUrl(
-                  getPath(attachedimage),
-                  image_scale || 'preview',
-                )})`,
-              }}
+              style={
+                attachedimage
+                  ? {
+                      backgroundImage: `url(${getScaleUrl(
+                        getPath(attachedimage),
+                        image_scale || 'preview',
+                      )})`,
+                    }
+                  : {}
+              }
             ></div>
           </LazyLoadComponent>
           <span className="card-title">{title}</span>

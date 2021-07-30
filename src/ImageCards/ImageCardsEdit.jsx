@@ -9,12 +9,6 @@ import image_schema from './schema';
 
 const tweakSchema = (schema, data) => {
   const { blockRenderers } = config.blocks.blocksConfig.imagecards;
-  const renderers = Object.keys(blockRenderers).map((k) => [
-    k,
-    blockRenderers[k].title,
-  ]);
-  schema.properties.display.choices = renderers;
-
   const extension = data.display
     ? blockRenderers[data.display].schemaExtender
     : null;
