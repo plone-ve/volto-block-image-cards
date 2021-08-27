@@ -9,12 +9,6 @@ import image_schema from './schema';
 
 const tweakSchema = (schema, data) => {
   const { blockRenderers } = config.blocks.blocksConfig.imagecards;
-  const renderers = Object.keys(blockRenderers).map((k) => [
-    k,
-    blockRenderers[k].title,
-  ]);
-  schema.properties.display.choices = renderers;
-
   const extension = data.display
     ? blockRenderers[data.display].schemaExtender
     : null;
@@ -23,9 +17,14 @@ const tweakSchema = (schema, data) => {
 
 const ImageCardEdit = (props) => {
   const schema = tweakSchema(image_schema(props), props.data);
+  const display = props.data.display || 'carousel';
+  const CardsView =
+    config.blocks.blocksConfig.imagecards.blockRenderers?.[display]?.edit ||
+    ImageCardsView;
+
   return (
     <>
-      <ImageCardsView data={props.data} />
+      <CardsView data={props.data} />
 
       <SidebarPortal selected={props.selected}>
         <InlineForm

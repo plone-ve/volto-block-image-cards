@@ -4,8 +4,8 @@ pipeline {
   environment {
         GIT_NAME = "volto-block-image-cards"
         NAMESPACE = "@eeacms"
-        SONARQUBE_TAGS = "volto.eea.europa.eu"
-        DEPENDENCIES = ""
+        SONARQUBE_TAGS = "volto.eea.europa.eu,biodiversity.europa.eu"
+        DEPENDENCIES = "volto-slate @eeacms/volto-block-style"
     }
 
   stages {

@@ -6,7 +6,6 @@ import {
   BlockStyleWrapperView,
 } from '@eeacms/volto-block-style/BlockStyleWrapper';
 import AttachedImageWidget from './ImageCards/AttachedImageWidget';
-
 import RoundTiled from './ImageCards/RoundTiled';
 import Carousel from './ImageCards/Carousel';
 
