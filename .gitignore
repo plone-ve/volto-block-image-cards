@@ -1,5 +1,7 @@
 .vscode/
 .history
+.eslintrc.js
+project
 logs
 *.log
 npm-debug.log*
@@ -7,10 +9,13 @@ npm-debug.log*
 *.swp
 yarn-error.log
 yarn.lock
+package-lock.json
 
 node_modules
 build
 dist
+cypress/videos
+cypress/reports
 screenshots
 videos
 .env.local
@@ -18,4 +23,3 @@ videos
 .env.test.local
 .env.production.local
 *~
-project
