@@ -4,7 +4,7 @@ pipeline {
   environment {
         GIT_NAME = "volto-block-image-cards"
         NAMESPACE = "@eeacms"
-        SONARQUBE_TAGS = "volto.eea.europa.eu,biodiversity.europa.eu,climate-energy.eea.europa.eu,www.eea.europa.eu-ims,sustainability.eionet.europa.eu,forest.eea.europa.eu,clms.land.copernicus.eu"
+        SONARQUBE_TAGS = "volto.eea.europa.eu,biodiversity.europa.eu,climate-energy.eea.europa.eu,www.eea.europa.eu-ims,sustainability.eionet.europa.eu,forest.eea.europa.eu,clms.land.copernicus.eu,industry.eea.europa.eu"
         DEPENDENCIES = "volto-slate @eeacms/volto-block-style"
     }
 
