@@ -49,7 +49,7 @@ class Carousel extends Component {
             }
           />
           <div className="slide-overlay"></div>
-          <div className="ui container">
+          <div className="slider-caption ui container">
             <div className="slide-body">
               {card.link ? (
                 <UniversalLink href={card.link}>
@@ -70,9 +70,9 @@ class Carousel extends Component {
                 </div>
               )}
             </div>
-            <div className="slide-copyright">
-              {serializeNodes(card.copyright)}
-            </div>
+          </div>
+          <div className="slide-copyright ui container">
+            {serializeNodes(card.copyright)}
           </div>
         </div>
       );
