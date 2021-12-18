@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import loadable from '@loadable/component';
+import { Message } from 'semantic-ui-react';
 import { Icon, UniversalLink } from '@plone/volto/components';
 
 import leftSVG from '@plone/volto/icons/left-key.svg';
@@ -136,9 +137,13 @@ class Carousel extends Component {
           })}
         >
           <div className="slider-wrapper">
-            <Slider {...settings} ref={(slider) => (this.slider = slider)}>
-              {this.renderSlide(cards, data)}
-            </Slider>
+            {cards.length ? (
+              <Slider {...settings} ref={(slider) => (this.slider = slider)}>
+                {this.renderSlide(cards, data)}
+              </Slider>
+            ) : (
+              <Message>No image cards</Message>
+            )}
             {cards.length > 1 && this.renderSlideArrows()}
           </div>
         </div>
