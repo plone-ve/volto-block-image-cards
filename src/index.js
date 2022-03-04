@@ -5,10 +5,11 @@ import {
   BlockStyleWrapperEdit,
   BlockStyleWrapperView,
 } from '@eeacms/volto-block-style/BlockStyleWrapper';
-import AttachedImageWidget from './ImageCards/AttachedImageWidget';
-import RoundTiled from './ImageCards/RoundTiled';
-import Carousel from './ImageCards/Carousel';
-import DiscreetCarousel from './ImageCards/DiscreetCarousel';
+import AttachedImageWidget from './ImageCards/widgets/AttachedImageWidget';
+import Cards from './ImageCards/displays/Cards';
+import Carousel from './ImageCards/displays/Carousel';
+import DiscreetCarousel from './ImageCards/displays/DiscreetCarousel';
+import RoundTiled from './ImageCards/displays/RoundTiled';
 
 export default (config) => {
   config.blocks.blocksConfig.imagecards = {
@@ -45,6 +46,12 @@ export default (config) => {
         schema: null,
         view: DiscreetCarousel,
         schemaExtender: DiscreetCarousel.schemaExtender,
+      },
+      cards_grid: {
+        title: 'Cards grid',
+        view: Cards,
+        schema: Cards.schema,
+        schemaExtender: Cards.schemaExtender,
       },
     },
     security: {

@@ -5,9 +5,9 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { UniversalLink } from '@plone/volto/components';
 import { BodyClass } from '@plone/volto/helpers';
 
-import { getScaleUrl, getPath } from './utils';
+import { getScaleUrl, getPath } from '../utils';
 
-import './css/roundtiled.less';
+import '../css/roundtiled.less';
 
 export const Card = (props) => {
   const { title, link, attachedimage, image_scale } = props;

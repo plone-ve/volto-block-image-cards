@@ -8,9 +8,9 @@ import rightSVG from '@plone/volto/icons/right-key.svg';
 import cx from 'classnames';
 
 import 'slick-carousel/slick/slick.css';
-import './css/carousel.less';
+import '../css/carousel.less';
 
-import { getScaleUrl, getPath } from './utils';
+import { getScaleUrl, getPath } from '../utils';
 
 import { serializeNodes } from 'volto-slate/editor/render';
 import { BodyClass } from '@plone/volto/helpers';

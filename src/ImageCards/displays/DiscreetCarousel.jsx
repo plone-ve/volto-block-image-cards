@@ -1,14 +1,14 @@
 import React from 'react';
 import { Popup, Image, Message } from 'semantic-ui-react';
-import ResponsiveContainer from './ResponsiveContainer';
+import ResponsiveContainer from '../ResponsiveContainer';
 
 import loadable from '@loadable/component';
 
 import 'slick-carousel/slick/slick.css';
-import './css/discreetcarousel.less';
+import '../css/discreetcarousel.less';
 // import 'slick-carousel/slick/slick-theme.css';
 
-import { getScaleUrl, getPath } from './utils';
+import { getScaleUrl, getPath } from '../utils';
 
 const Slider = loadable(() => import('react-slick'));
 
