@@ -1,0 +1,1 @@
+export AttachedImageWidget from './AttachedImageWidget';
