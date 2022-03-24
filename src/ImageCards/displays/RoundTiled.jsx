@@ -1,12 +1,10 @@
-import cx from 'classnames';
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Message } from 'semantic-ui-react';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { UniversalLink } from '@plone/volto/components';
 import { BodyClass } from '@plone/volto/helpers';
-
+import cx from 'classnames';
 import { getScaleUrl, getPath } from '../utils';
-
 import '../css/roundtiled.less';
 
 export const Card = (props) => {
@@ -16,7 +14,7 @@ export const Card = (props) => {
     <div className="card">
       {link ? (
         <>
-          <UniversalLink className={'card-link'} href={link}>
+          <UniversalLink className="card-link" href={link}>
             <LazyLoadComponent>
               <div
                 className="card-image"
@@ -59,9 +57,11 @@ export const Card = (props) => {
   );
 };
 
-const RoundTiled = ({ data }) => {
+const RoundTiled = (props) => {
+  const { data, editable } = props;
   const { title, cards, image_scale } = data;
-  return (
+
+  return cards && cards.length > 0 ? (
     <div
       className={cx(
         'block align imagecards-block',
@@ -77,10 +77,10 @@ const RoundTiled = ({ data }) => {
           'full-width': data.align === 'full',
         })}
       >
-        <div className={'roundtiled'}>
-          <h2 className={'roundtiled-title'}>{title}</h2>
+        <div className="roundtiled">
+          <h2 className="roundtiled-title">{title}</h2>
           <div className="cards">
-            <Grid className={'cards-grid'}>
+            <Grid className="cards-grid">
               {(cards || []).map((card, i) => (
                 <Grid.Column key={i} mobile={12} tablet={6} computer={3}>
                   <Card {...card} image_scale={image_scale} />
@@ -91,6 +91,8 @@ const RoundTiled = ({ data }) => {
         </div>
       </div>
     </div>
+  ) : (
+    <>{editable ? <Message>No image cards</Message> : ''}</>
   );
 };
 
