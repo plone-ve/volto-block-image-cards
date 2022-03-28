@@ -3,6 +3,7 @@ import { Popup, Image, Message } from 'semantic-ui-react';
 import ResponsiveContainer from '../ResponsiveContainer';
 
 import loadable from '@loadable/component';
+import { CommonCarouselschemaExtender } from './../CommonAssets/schema';
 
 import 'slick-carousel/slick/slick.css';
 import '../css/discreetcarousel.less';
@@ -51,23 +52,29 @@ const DiscreetCarousel = (props) => {
   React.useEffect(() => setIsClient(true), []);
   const {
     cards = [],
+    fade,
+    image_scale,
+    pauseOnHover,
     height = '100px',
     itemsPerRow = 4,
-    hideNavigationDots = false,
     autoplay = false,
+    infinite = false,
+    hideArrows = true,
     autoplaySpeed = 3000,
-    image_scale = 'large',
+    hideNavigationDots = false,
   } = data;
 
   const carouselSettings = {
     // speed: 800,
-    infinite: false,
+    fade: fade,
+    infinite: infinite,
     slidesToShow: Math.min(cards.length, itemsPerRow),
     slidesToScroll: itemsPerRow,
     dots: itemsPerRow > 1 && !hideNavigationDots,
     autoplay: itemsPerRow > 1 && autoplay && !editable,
     autoplaySpeed,
-    fade: false,
+    arrows: !hideArrows,
+    pauseOnHover: pauseOnHover,
     useTransform: false,
     lazyLoad: 'ondemand',
 
@@ -133,66 +140,25 @@ const DiscreetCarousel = (props) => {
 
 export default DiscreetCarousel;
 
-// See https://react-slick.neostack.com/docs/api
-export const DiscreetCarouselSpotlightSchema = ({ data, schema, intl }) => {
-  return {
-    fieldsets: [
-      {
-        id: 'discreetCarouselSpotlight',
-        title: 'Discreet Carousel Settings',
-        fields: [
-          'autoplay',
-          'autoplaySpeed',
-          'hideNavigationDots',
-          'height',
-          'itemsPerRow',
-        ],
-      },
-    ],
-    properties: {
-      autoplay: {
-        type: 'boolean',
-        title: 'Autoplay',
-      },
-      autoplaySpeed: {
-        type: 'number',
-        title: 'Autoplay delay',
-        defaultValue: 1000,
-      },
-      hideNavigationDots: {
-        type: 'boolean',
-        title: 'Hide navigation dots',
-      },
-      itemsPerRow: {
-        type: 'number',
-        title: 'Items per row',
-        defaultValue: 4,
-      },
-      height: {
-        title: (
-          <a
-            rel="noreferrer"
-            target="_blank"
-            href="https://developer.mozilla.org/en-US/docs/Web/CSS/height"
-          >
-            CSS height
-          </a>
-        ),
-      },
-    },
-  };
-};
-
 DiscreetCarousel.schemaExtender = (schema, data, intl) => {
-  const Custom = DiscreetCarouselSpotlightSchema({ data, schema, intl });
+  const Common = CommonCarouselschemaExtender({ data, schema, intl });
+
+  Common.properties.itemsPerRow = {
+    type: 'number',
+    title: 'Slides to show',
+    description: 'How many slides to show in one frame',
+    defaultValue: 4,
+  };
+
+  Common.fieldsets[0].fields.push('itemsPerRow');
+
   return {
     ...schema,
-    ...Custom,
-    properties: { ...schema.properties, ...Custom.properties },
-    fieldsets: [
-      // { id: 'empty', fields: [] },
-      ...schema.fieldsets,
-      ...Custom.fieldsets,
-    ],
+    ...Common,
+    properties: {
+      ...schema.properties,
+      ...Common.properties,
+    },
+    fieldsets: [...schema.fieldsets, ...Common.fieldsets],
   };
 };

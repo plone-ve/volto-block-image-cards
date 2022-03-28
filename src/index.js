@@ -42,6 +42,7 @@ export default (config) => {
         title: 'Splashy Carousel',
         schema: null,
         view: Carousel,
+        schemaExtender: Carousel.schemaExtender,
       },
       discreetCarousel: {
         title: 'Discreet Carousel',

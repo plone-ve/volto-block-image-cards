@@ -2,18 +2,16 @@ import React from 'react';
 import loadable from '@loadable/component';
 import { Message } from 'semantic-ui-react';
 import { Icon, UniversalLink } from '@plone/volto/components';
+import { BodyClass } from '@plone/volto/helpers';
+import { serializeNodes } from 'volto-slate/editor/render';
+import { getScaleUrl, getPath } from '../utils';
+import { CommonCarouselschemaExtender } from './../CommonAssets/schema';
+import cx from 'classnames';
 
 import leftSVG from '@plone/volto/icons/left-key.svg';
 import rightSVG from '@plone/volto/icons/right-key.svg';
-import cx from 'classnames';
-
 import 'slick-carousel/slick/slick.css';
 import '../css/carousel.less';
-
-import { getScaleUrl, getPath } from '../utils';
-
-import { serializeNodes } from 'volto-slate/editor/render';
-import { BodyClass } from '@plone/volto/helpers';
 
 const Slider = loadable(() => import('react-slick'));
 
@@ -53,17 +51,28 @@ const Arrows = (props) => {
 
 const Carousel = (props) => {
   const { data, editable } = props;
-  const { cards } = data;
+  const {
+    cards,
+    height = '600',
+    fade = true,
+    infinite = true,
+    autoplay = true,
+    hideArrows = false,
+    pauseOnHover = true,
+    autoplaySpeed = 10000,
+    hideNavigationDots = true,
+  } = data;
   const slider = React.useRef(null);
 
   var settings = {
-    fade: true,
-    speed: 800,
-    infinite: true,
-    autoplay: true,
-    pauseOnHover: true,
-    autoplaySpeed: 10000,
+    fade: fade,
+    infinite: infinite,
+    autoplay: autoplay && !editable,
+    pauseOnHover: pauseOnHover,
+    autoplaySpeed: parseInt(autoplaySpeed),
+    dots: !hideNavigationDots,
     slidesToShow: 1,
+    arrows: false, // we use custom arrows
     slidesToScroll: 1,
     lazyLoad: 'ondemand',
   };
@@ -84,7 +93,7 @@ const Carousel = (props) => {
           'full-width': data.align === 'full',
         })}
       >
-        <div className="slider-wrapper">
+        <div className="slider-wrapper" style={{ height: `${height}px` }}>
           <Slider {...settings} ref={slider}>
             {(cards || []).map((card, index) => (
               <div className="slider-slide" key={index}>
@@ -97,6 +106,7 @@ const Carousel = (props) => {
                             getPath(card.attachedimage),
                             props.image_scale || 'large',
                           )})`,
+                          height: `${height}px`,
                         }
                       : {}
                   }
@@ -132,7 +142,7 @@ const Carousel = (props) => {
               </div>
             ))}
           </Slider>
-          {cards.length > 1 && <Arrows slider={slider} />}
+          {!hideArrows && cards.length > 1 && <Arrows slider={slider} />}
         </div>
       </div>
     </div>
@@ -142,3 +152,17 @@ const Carousel = (props) => {
 };
 
 export default Carousel;
+
+Carousel.schemaExtender = (schema, data, intl) => {
+  const Common = CommonCarouselschemaExtender({ data, schema, intl });
+
+  return {
+    ...schema,
+    ...Common,
+    properties: {
+      ...schema.properties,
+      ...Common.properties,
+    },
+    fieldsets: [...schema.fieldsets, ...Common.fieldsets],
+  };
+};
