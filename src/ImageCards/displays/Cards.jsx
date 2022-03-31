@@ -1,6 +1,6 @@
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
 import React from 'react';
-import { Card, Icon } from 'semantic-ui-react';
+import { Card, Icon, Message } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
 import { serializeNodes } from 'volto-slate/editor/render';
 
@@ -13,7 +13,8 @@ const alignmentTypes = {
   full: 'left',
 };
 
-const Cards = ({ data }) => {
+const Cards = (props) => {
+  const { data, editable } = props;
   const { align, cards, image_scale, gridSize = 'one' } = data;
 
   const makeImage = (item) => {
@@ -49,18 +50,17 @@ const Cards = ({ data }) => {
     </>
   );
 
-  return (
-    cards &&
-    cards.length > 0 && (
-      <div className={`ui fluid ${gridSize || ''} cards`}>
-        {cards.map((item) => (
-          <Card key={item['@id']} className={alignmentTypes[align] || 'left'}>
-            {makeImage(item)}
-            {makeTextBody(item)}
-          </Card>
-        ))}
-      </div>
-    )
+  return cards && cards.length > 0 ? (
+    <div className={`ui fluid ${gridSize || ''} cards`}>
+      {cards.map((item) => (
+        <Card key={item['@id']} className={alignmentTypes[align] || 'left'}>
+          {makeImage(item)}
+          {makeTextBody(item)}
+        </Card>
+      ))}
+    </div>
+  ) : (
+    <>{editable ? <Message>No image cards</Message> : ''}</>
   );
 };
 

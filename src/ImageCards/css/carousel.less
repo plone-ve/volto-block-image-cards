@@ -24,8 +24,10 @@
   .slider-wrapper {
     position: relative;
     overflow: hidden;
-    width: 100%;
-    max-width: 100%;
+    width: 0;
+    min-width: 100%;
+    // max-width: 100%;
+    // width: 100%;
     height: @sliderWrapperHeight;
 
     @media (max-width: 600px) {
@@ -184,8 +186,9 @@
   margin-left: -50vw !important;
 }
 
-.slick-arrow {
-  display: none !important;
+.slick-prev:before,
+.slick-next:before {
+  color: #ccc;
 }
 
 .loadAddonOverrides();

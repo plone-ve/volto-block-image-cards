@@ -79,7 +79,6 @@ const ImageCards = (props) => {
         description: 'Add a list of Images as Carousel Items',
         schema: schema(),
       },
-
       image_scale: {
         type: 'string',
         title: 'Image scale',
