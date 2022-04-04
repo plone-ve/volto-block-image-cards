@@ -3,8 +3,8 @@ import React from 'react';
 import { Card, Icon, Message } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
 import { serializeNodes } from 'volto-slate/editor/render';
-
 import { getScaleUrl, getPath } from '../utils';
+import cx from 'classnames';
 
 const alignmentTypes = {
   left: 'left',
@@ -53,7 +53,13 @@ const Cards = (props) => {
   return cards && cards.length > 0 ? (
     <div className={`ui fluid ${gridSize || ''} cards`}>
       {cards.map((item) => (
-        <Card key={item['@id']} className={alignmentTypes[align] || 'left'}>
+        <Card
+          key={item['@id']}
+          className={cx(
+            alignmentTypes[align] || 'left',
+            item.inverted ? 'inverted' : '',
+          )}
+        >
           {makeImage(item)}
           {makeTextBody(item)}
         </Card>
@@ -78,6 +84,7 @@ Cards.schema = () => ({
         'link',
         'linkTitle',
         'copyright',
+        'inverted',
       ],
     },
   ],
@@ -110,6 +117,10 @@ Cards.schema = () => ({
     copyright: {
       widget: 'slate_richtext',
       title: 'Copyright',
+    },
+    inverted: {
+      type: 'boolean',
+      title: 'Card color inverted',
     },
   },
 
