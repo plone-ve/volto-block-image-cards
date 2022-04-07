@@ -53,6 +53,7 @@ const Carousel = (props) => {
   const { data, editable } = props;
   const {
     cards,
+    image_scale,
     height = '600',
     fade = true,
     infinite = true,
@@ -104,7 +105,7 @@ const Carousel = (props) => {
                       ? {
                           backgroundImage: `url(${getScaleUrl(
                             getPath(card.attachedimage),
-                            props.image_scale || 'large',
+                            image_scale || 'large',
                           )})`,
                           height: `${height}px`,
                         }
