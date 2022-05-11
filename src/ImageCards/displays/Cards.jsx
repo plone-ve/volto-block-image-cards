@@ -1,10 +1,12 @@
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
 import React from 'react';
+import cx from 'classnames';
 import { Card, Icon, Message } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
 import { serializeNodes } from 'volto-slate/editor/render';
 import { getScaleUrl, getPath } from '../utils';
-import cx from 'classnames';
+
+import '@eeacms/volto-block-image-cards/ImageCards/css/cards.less';
 
 const alignmentTypes = {
   left: 'left',
