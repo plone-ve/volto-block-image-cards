@@ -7,23 +7,32 @@
 .loadAddonVariables();
 
 .ui.cards {
-  .card.inverted {
-    background-color: @invertedBacgroundColor;
-
-    .content {
+  &.primary, &.secondary {
+    .card .content {
       .header, .description {
-        color: @invertedTextColor;
+        color: #fff;
       }
     }
 
-    .extra.content {
+    .card .extra.content {
       a {
-        color: @invertedTextColor;
+        color: #fff;
       }
     }
   }
-}
 
+  &.primary {
+    .card {
+      background-color: @primaryColor;
+    }
+  }
+
+  &.secondary {
+    .card {
+      background-color: @secondaryColor;
+    }
+  }
+}
 
 @media only screen and (max-width: @tabletBreakpoint) {
   .ui.cards {
