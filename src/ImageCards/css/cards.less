@@ -7,9 +7,11 @@
 .loadAddonVariables();
 
 .ui.cards {
-  &.primary, &.secondary {
+  &.primary,
+  &.secondary {
     .card .content {
-      .header, .description {
+      .header,
+      .description {
         color: #fff;
       }
     }
@@ -36,7 +38,9 @@
 
 @media only screen and (max-width: @tabletBreakpoint) {
   .ui.cards {
-    &.two, &.three, &.four {
+    &.two,
+    &.three,
+    &.four {
       .card {
         width: calc(100% - 2rem) !important;
       }
