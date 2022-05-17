@@ -1,0 +1,51 @@
+@import 'globals.less';
+
+@addon: 'volto-addons';
+@addontype: 'imagecard';
+@addonelement: 'cards';
+
+.loadAddonVariables();
+
+.ui.cards {
+  &.primary,
+  &.secondary {
+    .card .content {
+      .header,
+      .description {
+        color: #fff;
+      }
+    }
+
+    .card .extra.content {
+      a {
+        color: #fff;
+      }
+    }
+  }
+
+  &.primary {
+    .card {
+      background-color: @primaryColor;
+    }
+  }
+
+  &.secondary {
+    .card {
+      background-color: @secondaryColor;
+    }
+  }
+}
+
+@media only screen and (max-width: @tabletBreakpoint) {
+  .ui.cards {
+    &.two,
+    &.three,
+    &.four {
+      .card {
+        width: calc(100% - 2rem) !important;
+      }
+    }
+  }
+}
+
+.loadAddonOverrides();

@@ -1,10 +1,12 @@
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
 import React from 'react';
+import cx from 'classnames';
 import { Card, Icon, Message } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
 import { serializeNodes } from 'volto-slate/editor/render';
 import { getScaleUrl, getPath } from '../utils';
-import cx from 'classnames';
+
+import '@eeacms/volto-block-image-cards/ImageCards/css/cards.less';
 
 const alignmentTypes = {
   left: 'left',
@@ -15,7 +17,13 @@ const alignmentTypes = {
 
 const Cards = (props) => {
   const { data, editable } = props;
-  const { align, cards, image_scale, gridSize = 'one' } = data;
+  const {
+    align,
+    cards,
+    image_scale,
+    gridSize = 'one',
+    theme = 'default',
+  } = data;
 
   const makeImage = (item) => {
     const { attachedimage } = item;
@@ -51,15 +59,9 @@ const Cards = (props) => {
   );
 
   return cards && cards.length > 0 ? (
-    <div className={`ui fluid ${gridSize || ''} cards`}>
+    <div className={cx('ui fluid cards', gridSize, theme)}>
       {cards.map((item) => (
-        <Card
-          key={item['@id']}
-          className={cx(
-            alignmentTypes[align] || 'left',
-            item.inverted ? 'inverted' : '',
-          )}
-        >
+        <Card key={item['@id']} className={cx(alignmentTypes[align] || 'left')}>
           {makeImage(item)}
           {makeTextBody(item)}
         </Card>
@@ -84,7 +86,6 @@ Cards.schema = () => ({
         'link',
         'linkTitle',
         'copyright',
-        'inverted',
       ],
     },
   ],
@@ -118,16 +119,12 @@ Cards.schema = () => ({
       widget: 'slate_richtext',
       title: 'Copyright',
     },
-    inverted: {
-      type: 'boolean',
-      title: 'Card color inverted',
-    },
   },
 
   required: ['attachedimage'],
 });
 
-Cards.schemaExtender = (schema, data, intl) => {
+Cards.schemaExtender = (schema) => {
   return {
     ...schema,
     fieldsets: [
@@ -135,7 +132,7 @@ Cards.schemaExtender = (schema, data, intl) => {
       {
         id: 'cards_grid',
         title: 'Cards grid',
-        fields: ['gridSize'],
+        fields: ['gridSize', 'theme'],
       },
     ],
     properties: {
@@ -150,6 +147,14 @@ Cards.schemaExtender = (schema, data, intl) => {
         ],
         factory: 'Choice',
         type: 'string',
+      },
+      theme: {
+        title: 'Theme',
+        choices: [
+          ['default', 'Default'],
+          ['primary', 'Primary'],
+          ['secondary', 'Secondary'],
+        ],
       },
     },
   };
