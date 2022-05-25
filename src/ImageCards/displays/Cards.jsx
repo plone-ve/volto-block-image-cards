@@ -59,9 +59,12 @@ const Cards = (props) => {
   );
 
   return cards && cards.length > 0 ? (
-    <div className={cx('ui fluid cards', gridSize, theme)}>
+    <div className={cx('ui fluid cards', gridSize)}>
       {cards.map((item) => (
-        <Card key={item['@id']} className={cx(alignmentTypes[align] || 'left')}>
+        <Card
+          key={item['@id']}
+          className={cx(alignmentTypes[align] || 'left', theme)}
+        >
           {makeImage(item)}
           {makeTextBody(item)}
         </Card>
@@ -154,6 +157,7 @@ Cards.schemaExtender = (schema) => {
           ['default', 'Default'],
           ['primary', 'Primary'],
           ['secondary', 'Secondary'],
+          ['tertiary', 'Tertiary'],
         ],
       },
     },
