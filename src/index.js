@@ -1,4 +1,4 @@
-import codeSVG from '@plone/volto/icons/code.svg';
+import iconSVG from '@plone/volto/icons/image.svg';
 import React from 'react';
 import { ImageCardsView, ImageCardsEdit } from './ImageCards';
 import {
@@ -17,7 +17,7 @@ export default (config) => {
   config.blocks.blocksConfig.imagecards = {
     id: 'imagecards',
     title: 'Image Cards',
-    icon: codeSVG,
+    icon: iconSVG,
     group: 'common',
     view: (props) => (
       <BlockStyleWrapperView {...props}>
