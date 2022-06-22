@@ -5,7 +5,6 @@ import {
   BlockStyleWrapperEdit,
   BlockStyleWrapperView,
 } from '@eeacms/volto-block-style/BlockStyleWrapper';
-import { AttachedImageWidget } from './ImageCards/widgets';
 import {
   Cards,
   Carousel,
@@ -63,8 +62,5 @@ export default (config) => {
     },
   };
 
-  if (!config.widgets.widget.attachedimage) {
-    config.widgets.widget.attachedimage = AttachedImageWidget;
-  }
   return config;
 };
