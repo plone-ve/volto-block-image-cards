@@ -24,11 +24,11 @@
   "dependencies": {
     "volto-slate": "*",
     "@eeacms/volto-block-style": "*",
+    "@eeacms/volto-object-widget": "*",
     "react-lazy-load-image-component": "^1.4.0",
     "react-resize-detector": "6.7.6",
     "react-slick": "^0.24.0",
-    "slick-carousel": "^1.8.1",
-    "@eeacms/volto-object-widget": "4.0.1"
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@cypress/code-coverage": "^3.9.5",
