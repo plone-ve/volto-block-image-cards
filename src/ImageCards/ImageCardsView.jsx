@@ -18,7 +18,6 @@ const CardsView = (props) => {
 const ImageCardsView = (props) => {
   return (
     <BlockStyleWrapperView {...props}>
-      <h1>David</h1>
       <CardsView {...props} />
     </BlockStyleWrapperView>
   );
