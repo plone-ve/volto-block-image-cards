@@ -6,6 +6,8 @@ import config from '@plone/volto/registry';
 import ImageCardsView from './ImageCardsView';
 import ImageCardSchema from './schema';
 
+import { BlockStyleWrapperEdit } from '@eeacms/volto-block-style/BlockStyleWrapper';
+
 const tweakSchema = (schema, data) => {
   const { blockRenderers } = config.blocks.blocksConfig.imagecards;
   const extension = data.display
@@ -14,7 +16,7 @@ const tweakSchema = (schema, data) => {
   return extension ? extension(schema, data) : schema;
 };
 
-const ImageCardsEdit = (props) => {
+const CardsEdit = (props) => {
   const { selected, onChangeBlock, data = {}, block } = props;
   const basicSchema = ImageCardSchema(props);
   const schema = tweakSchema(basicSchema, props.data, props.intl);
@@ -38,6 +40,14 @@ const ImageCardsEdit = (props) => {
         />
       </SidebarPortal>
     </>
+  );
+};
+
+const ImageCardsEdit = (props) => {
+  return (
+    <BlockStyleWrapperEdit {...props}>
+      <CardsEdit {...props} />
+    </BlockStyleWrapperEdit>
   );
 };
 

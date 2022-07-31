@@ -1,10 +1,5 @@
 import iconSVG from '@plone/volto/icons/images.svg';
-import React from 'react';
 import { ImageCardsView, ImageCardsEdit } from './ImageCards';
-import {
-  BlockStyleWrapperEdit,
-  BlockStyleWrapperView,
-} from '@eeacms/volto-block-style/BlockStyleWrapper';
 import {
   Cards,
   Carousel,
@@ -18,16 +13,8 @@ export default (config) => {
     title: 'Image Cards',
     icon: iconSVG,
     group: 'common',
-    view: (props) => (
-      <BlockStyleWrapperView {...props}>
-        <ImageCardsView {...props} />
-      </BlockStyleWrapperView>
-    ),
-    edit: (props) => (
-      <BlockStyleWrapperEdit {...props}>
-        <ImageCardsEdit {...props} />
-      </BlockStyleWrapperEdit>
-    ),
+    view: ImageCardsView,
+    edit: ImageCardsEdit,
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
