@@ -45,7 +45,7 @@ const CardsEdit = (props) => {
 
 const ImageCardsEdit = (props) => {
   return (
-    <BlockStyleWrapperEdit>
+    <BlockStyleWrapperEdit {...props}>
       <CardsEdit {...props} />
     </BlockStyleWrapperEdit>
   );
