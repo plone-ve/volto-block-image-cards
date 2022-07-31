@@ -1,5 +1,4 @@
 import iconSVG from '@plone/volto/icons/images.svg';
-import React from 'react';
 import { ImageCardsView, ImageCardsEdit } from './ImageCards';
 import {
   Cards,
