@@ -84,7 +84,7 @@ class ResponsiveContainer extends Component {
     }
   };
 
-  renderChildren(props) {
+  renderChildren() {
     const { containerWidth, containerHeight } = this.state;
 
     const {

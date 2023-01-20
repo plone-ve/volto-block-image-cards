@@ -58,7 +58,11 @@ const Cards = (props) => {
     </>
   );
 
-  return cards && cards.length > 0 ? (
+  if (!cards?.length && editable) {
+    return <Message>No image cards</Message>;
+  }
+
+  return cards?.length ? (
     <div className={cx('ui fluid cards', gridSize)}>
       {cards.map((item) => (
         <Card
@@ -71,7 +75,7 @@ const Cards = (props) => {
       ))}
     </div>
   ) : (
-    <>{editable ? <Message>No image cards</Message> : ''}</>
+    ''
   );
 };
 

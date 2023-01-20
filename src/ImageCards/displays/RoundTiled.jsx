@@ -61,7 +61,11 @@ const RoundTiled = (props) => {
   const { data, editable } = props;
   const { title, cards, image_scale } = data;
 
-  return cards && cards.length > 0 ? (
+  if (!cards?.length && editable) {
+    return <Message>No image cards</Message>;
+  }
+
+  return cards?.length ? (
     <div
       className={cx(
         'block align imagecards-block',
@@ -92,7 +96,7 @@ const RoundTiled = (props) => {
       </div>
     </div>
   ) : (
-    <>{editable ? <Message>No image cards</Message> : ''}</>
+    ''
   );
 };
 

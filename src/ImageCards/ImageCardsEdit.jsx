@@ -19,7 +19,7 @@ const tweakSchema = (schema, data) => {
 const CardsEdit = (props) => {
   const { selected, onChangeBlock, data = {}, block } = props;
   const basicSchema = ImageCardSchema(props);
-  const schema = tweakSchema(basicSchema, props.data, props.intl);
+  const schema = tweakSchema(basicSchema, props.data);
 
   return (
     <>
