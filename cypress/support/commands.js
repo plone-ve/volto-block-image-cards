@@ -7,7 +7,7 @@ const SLATE_TITLE_SELECTOR = '.block.inner.title [contenteditable="true"]';
 Cypress.Commands.add('autologin', () => {
   let api_url, user, password;
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
-  user = 'admin2';
+  user = 'admin';
   password = 'admin';
 
   return cy
@@ -33,7 +33,7 @@ Cypress.Commands.add(
     let api_url, auth;
     api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
     auth = {
-      user: 'admin2',
+      user: 'admin',
       pass: 'admin',
     };
     if (contentType === 'File') {
@@ -133,7 +133,7 @@ Cypress.Commands.add('addContentType', (name) => {
   let api_url, auth;
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
   auth = {
-    user: 'admin2',
+    user: 'admin',
     pass: 'admin',
   };
   return cy
@@ -156,7 +156,7 @@ Cypress.Commands.add('removeContentType', (name) => {
   let api_url, auth;
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
   auth = {
-    user: 'admin2',
+    user: 'admin',
     pass: 'admin',
   };
   return cy
@@ -177,7 +177,7 @@ Cypress.Commands.add('addSlateJSONField', (type, name) => {
   let api_url, auth;
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
   auth = {
-    user: 'admin2',
+    user: 'admin',
     pass: 'admin',
   };
   return cy
@@ -204,7 +204,7 @@ Cypress.Commands.add('removeSlateJSONField', (type, name) => {
   let api_url, auth;
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
   auth = {
-    user: 'admin2',
+    user: 'admin',
     pass: 'admin',
   };
   return cy
@@ -227,7 +227,7 @@ Cypress.Commands.add('removeContent', (path) => {
   let api_url, auth;
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
   auth = {
-    user: 'admin2',
+    user: 'admin',
     pass: 'admin',
   };
   return cy
@@ -295,7 +295,7 @@ Cypress.Commands.add(
     let api_url, auth;
     api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
     auth = {
-      user: 'admin2',
+      user: 'admin',
       pass: 'admin',
     };
     return cy.request({
