@@ -72,10 +72,8 @@ class ResponsiveContainer extends Component {
     const newSize = this.getContainerSize();
 
     if (newSize) {
-      const {
-        containerWidth: oldWidth,
-        containerHeight: oldHeight,
-      } = this.state;
+      const { containerWidth: oldWidth, containerHeight: oldHeight } =
+        this.state;
       const { containerWidth, containerHeight } = newSize;
 
       if (containerWidth !== oldWidth || containerHeight !== oldHeight) {
@@ -87,15 +85,7 @@ class ResponsiveContainer extends Component {
   renderChildren() {
     const { containerWidth, containerHeight } = this.state;
 
-    const {
-      aspect,
-      width,
-      height,
-      // minWidth,
-      // minHeight,
-      maxHeight,
-      children,
-    } = this.props;
+    const { aspect, width, height, children } = this.props;
 
     let calculatedWidth = isPercent(width) ? containerWidth : asNumber(width);
     let calculatedHeight = isPercent(height)
@@ -111,25 +101,13 @@ class ResponsiveContainer extends Component {
         // But we should also take height into consideration
         calculatedWidth = calculatedHeight * aspect;
       }
-
-      // if maxHeight is set, overwrite if calculatedHeight is greater than maxHeight
-      if (maxHeight && calculatedHeight > maxHeight) {
-        calculatedHeight = maxHeight;
-      }
     }
     return __CLIENT__ ? children({ parentWidth: calculatedWidth }) : children;
   }
 
   render() {
-    const {
-      minWidth,
-      minHeight,
-      width,
-      height,
-      maxHeight,
-      id,
-      className,
-    } = this.props;
+    const { minWidth, minHeight, width, height, maxHeight, id, className } =
+      this.props;
     const style = { width, height, minWidth, minHeight, maxHeight };
     return (
       <div
@@ -143,7 +121,7 @@ class ResponsiveContainer extends Component {
           ...style,
         }}
       >
-        {this.renderChildren(this.props)}
+        {this.renderChildren()}
         <ReactResizeDetector
           handleWidth
           handleHeight
