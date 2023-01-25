@@ -65,7 +65,7 @@ const Carousel = (props) => {
   } = data;
   const slider = React.useRef(null);
 
-  var settings = {
+  const settings = {
     fade: fade,
     infinite: infinite,
     autoplay: autoplay && !editable,
@@ -78,7 +78,11 @@ const Carousel = (props) => {
     lazyLoad: 'ondemand',
   };
 
-  return cards && cards.length > 0 ? (
+  if (!cards?.length && editable) {
+    return <Message>No image cards</Message>;
+  }
+
+  return cards?.length ? (
     <div
       className={cx(
         'block align imagecards-block',
@@ -148,7 +152,7 @@ const Carousel = (props) => {
       </div>
     </div>
   ) : (
-    <>{editable ? <Message>No image cards</Message> : ''}</>
+    ''
   );
 };
 

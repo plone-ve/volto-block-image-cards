@@ -84,18 +84,10 @@ class ResponsiveContainer extends Component {
     }
   };
 
-  renderChildren(props) {
+  renderChildren() {
     const { containerWidth, containerHeight } = this.state;
 
-    const {
-      aspect,
-      width,
-      height,
-      // minWidth,
-      // minHeight,
-      maxHeight,
-      children,
-    } = this.props;
+    const { aspect, width, height, children } = this.props;
 
     let calculatedWidth = isPercent(width) ? containerWidth : asNumber(width);
     let calculatedHeight = isPercent(height)
@@ -110,11 +102,6 @@ class ResponsiveContainer extends Component {
       } else if (calculatedHeight) {
         // But we should also take height into consideration
         calculatedWidth = calculatedHeight * aspect;
-      }
-
-      // if maxHeight is set, overwrite if calculatedHeight is greater than maxHeight
-      if (maxHeight && calculatedHeight > maxHeight) {
-        calculatedHeight = maxHeight;
       }
     }
     return __CLIENT__ ? children({ parentWidth: calculatedWidth }) : children;
@@ -143,7 +130,7 @@ class ResponsiveContainer extends Component {
           ...style,
         }}
       >
-        {this.renderChildren(this.props)}
+        {this.renderChildren()}
         <ReactResizeDetector
           handleWidth
           handleHeight
