@@ -1,7 +1,7 @@
 import React from 'react';
 
 // See https://react-slick.neostack.com/docs/api
-export const CommonCarouselschemaExtender = ({ data, schema, intl }) => {
+export const CommonCarouselschemaExtender = ({ data }) => {
   return {
     fieldsets: [
       {

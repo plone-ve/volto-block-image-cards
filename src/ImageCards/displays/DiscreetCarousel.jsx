@@ -7,7 +7,6 @@ import { CommonCarouselschemaExtender } from './../CommonAssets/schema';
 
 import 'slick-carousel/slick/slick.css';
 import '../css/discreetcarousel.less';
-// import 'slick-carousel/slick/slick-theme.css';
 
 import { getScaleUrl, getPath } from '../utils';
 
@@ -106,13 +105,11 @@ const DiscreetCarousel = (props) => {
     ],
   };
 
-  return !cards.length ? (
-    editable ? (
-      <Message>No cards</Message>
-    ) : (
-      ''
-    )
-  ) : (
+  if (!cards?.length && editable) {
+    return <Message>No image cards</Message>;
+  }
+
+  return cards?.length ? (
     <div className="discreet-carousel-spotlight">
       <ResponsiveContainer>
         {({ parentWidth }) => {
@@ -135,6 +132,8 @@ const DiscreetCarousel = (props) => {
         }}
       </ResponsiveContainer>
     </div>
+  ) : (
+    ''
   );
 };
 
