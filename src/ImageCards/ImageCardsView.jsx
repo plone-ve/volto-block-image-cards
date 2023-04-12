@@ -1,8 +1,6 @@
 import React from 'react';
 import config from '@plone/volto/registry';
 
-import { BlockStyleWrapperView } from '@eeacms/volto-block-style/BlockStyleWrapper';
-
 const CardsView = (props) => {
   const byDisplayType = {};
   const blockRenderers = config.blocks.blocksConfig.imagecards.blockRenderers;
@@ -17,9 +15,9 @@ const CardsView = (props) => {
 
 const ImageCardsView = (props) => {
   return (
-    <BlockStyleWrapperView {...props}>
+    <div className="image-cards-wrapper">
       <CardsView {...props} />
-    </BlockStyleWrapperView>
+    </div>
   );
 };
 
