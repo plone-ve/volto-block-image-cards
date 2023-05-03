@@ -8,7 +8,7 @@ import { CommonCarouselschemaExtender } from './../CommonAssets/schema';
 import 'slick-carousel/slick/slick.css';
 import '../css/discreetcarousel.less';
 
-import { getScaleUrl, getPath } from '../utils';
+import { getScaleUrl, getFieldURL } from '../utils';
 
 const Slider = loadable(() => import('react-slick'));
 
@@ -34,7 +34,7 @@ const Card = ({ card = {}, height, image_scale, mode = 'view' }) => {
           <Image
             className="bg-image"
             src={getScaleUrl(
-              getPath(card.attachedimage),
+              getFieldURL(card.attachedimage),
               image_scale || 'large',
             )}
           />

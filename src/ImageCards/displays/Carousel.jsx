@@ -4,7 +4,7 @@ import { Message } from 'semantic-ui-react';
 import { Icon, UniversalLink } from '@plone/volto/components';
 import { BodyClass } from '@plone/volto/helpers';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
-import { getScaleUrl, getPath } from '../utils';
+import { getScaleUrl, getFieldURL } from '../utils';
 import { CommonCarouselschemaExtender } from './../CommonAssets/schema';
 import cx from 'classnames';
 
@@ -108,7 +108,7 @@ const Carousel = (props) => {
                     card.attachedimage
                       ? {
                           backgroundImage: `url(${getScaleUrl(
-                            getPath(card.attachedimage),
+                            getFieldURL(card.attachedimage),
                             image_scale || 'large',
                           )})`,
                           height: `${height}px`,
