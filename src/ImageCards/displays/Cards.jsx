@@ -4,7 +4,8 @@ import cx from 'classnames';
 import { Card, Icon, Message } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
-import { getScaleUrl, getFieldURL } from '../utils';
+import { getScaleUrl } from '../utils';
+import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
 
 import '@eeacms/volto-block-image-cards/ImageCards/css/cards.less';
 
