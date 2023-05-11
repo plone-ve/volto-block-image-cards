@@ -50,9 +50,9 @@ const Cards = (props) => {
       </Card.Content>
       {item.link && (
         <Card.Content extra>
-          <UniversalLink href={item.link}>
+          <UniversalLink href={getFieldURL(item.link)}>
             <Icon name="linkify" />
-            {item.linkTitle || item.link}
+            {item.linkTitle || getFieldURL(item.link)}
           </UniversalLink>
         </Card.Content>
       )}

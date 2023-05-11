@@ -4,8 +4,10 @@ import { Message } from 'semantic-ui-react';
 import { Icon, UniversalLink } from '@plone/volto/components';
 import { BodyClass } from '@plone/volto/helpers';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
-import { getScaleUrl, getFieldURL } from '../utils';
+import { getScaleUrl } from '../utils';
+import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
 import { CommonCarouselschemaExtender } from './../CommonAssets/schema';
+
 import cx from 'classnames';
 
 import leftSVG from '@plone/volto/icons/left-key.svg';
@@ -120,7 +122,7 @@ const Carousel = (props) => {
                 <div className="slider-caption ui container">
                   <div className="slide-body">
                     {card.link ? (
-                      <UniversalLink href={card.link}>
+                      <UniversalLink href={getFieldURL(card.link)}>
                         <div className="slide-title">{card.title || ''}</div>
                       </UniversalLink>
                     ) : (

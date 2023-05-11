@@ -8,12 +8,14 @@ import { CommonCarouselschemaExtender } from './../CommonAssets/schema';
 import 'slick-carousel/slick/slick.css';
 import '../css/discreetcarousel.less';
 
-import { getScaleUrl, getFieldURL } from '../utils';
+import { getScaleUrl } from '../utils';
+import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
 
 const Slider = loadable(() => import('react-slick'));
 
 const Card = ({ card = {}, height, image_scale, mode = 'view' }) => {
-  const { link, title } = card;
+  const { title } = card;
+  const link = getFieldURL(card.link);
 
   const LinkWrapper =
     link && mode === 'view'

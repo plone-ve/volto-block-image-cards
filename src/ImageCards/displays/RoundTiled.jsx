@@ -8,7 +8,8 @@ import { getScaleUrl, getFieldURL } from '../utils';
 import '../css/roundtiled.less';
 
 export const Card = (props) => {
-  const { title, link, attachedimage, image_scale } = props;
+  const { title, attachedimage, image_scale } = props;
+  const link = getFieldURL(props.link);
 
   return (
     <div className="card">
