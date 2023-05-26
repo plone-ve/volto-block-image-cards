@@ -8,7 +8,8 @@ import { getScaleUrl, getFieldURL } from '../utils';
 import '../css/roundtiled.less';
 
 export const Card = (props) => {
-  const { title, attachedimage, image_scale } = props;
+  const { title, image_scale } = props;
+  const attachedimage = getFieldURL(props.attachedimage);
   const link = getFieldURL(props.link);
 
   return (
@@ -23,7 +24,7 @@ export const Card = (props) => {
                   attachedimage
                     ? {
                         backgroundImage: `url(${getScaleUrl(
-                          getFieldURL(attachedimage),
+                          attachedimage,
                           image_scale || 'preview',
                         )})`,
                       }
@@ -43,7 +44,7 @@ export const Card = (props) => {
                 attachedimage
                   ? {
                       backgroundImage: `url(${getScaleUrl(
-                        getFieldURL(attachedimage),
+                        attachedimage,
                         image_scale || 'preview',
                       )})`,
                     }

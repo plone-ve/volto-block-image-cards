@@ -1,21 +1,20 @@
 import React from 'react';
-import { Popup, Image, Message } from 'semantic-ui-react';
-import ResponsiveContainer from '../ResponsiveContainer';
-
 import loadable from '@loadable/component';
-import { CommonCarouselschemaExtender } from './../CommonAssets/schema';
+import { Popup, Image, Message } from 'semantic-ui-react';
+import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
+import { getScaleUrl } from '@eeacms/volto-block-image-cards/ImageCards/utils';
+import ResponsiveContainer from '@eeacms/volto-block-image-cards/ImageCards/ResponsiveContainer';
+import { CommonCarouselschemaExtender } from '@eeacms/volto-block-image-cards/ImageCards/CommonAssets/schema';
 
 import 'slick-carousel/slick/slick.css';
-import '../css/discreetcarousel.less';
-
-import { getScaleUrl } from '../utils';
-import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
+import '@eeacms/volto-block-image-cards/ImageCards/css/discreetcarousel.less';
 
 const Slider = loadable(() => import('react-slick'));
 
 const Card = ({ card = {}, height, image_scale, mode = 'view' }) => {
   const { title } = card;
   const link = getFieldURL(card.link);
+  const image = getFieldURL(card.attachedimage);
 
   const LinkWrapper =
     link && mode === 'view'
@@ -35,10 +34,7 @@ const Card = ({ card = {}, height, image_scale, mode = 'view' }) => {
         <LinkWrapper>
           <Image
             className="bg-image"
-            src={getScaleUrl(
-              getFieldURL(card.attachedimage),
-              image_scale || 'large',
-            )}
+            src={getScaleUrl(image, image_scale || 'large')}
           />
         </LinkWrapper>
       </PopupWrapper>

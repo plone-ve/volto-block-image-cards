@@ -4,8 +4,8 @@ import cx from 'classnames';
 import { Card, Icon, Message } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
-import { getScaleUrl } from '../utils';
 import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
+import { getScaleUrl } from '@eeacms/volto-block-image-cards/ImageCards/utils';
 
 import '@eeacms/volto-block-image-cards/ImageCards/css/cards.less';
 
@@ -39,25 +39,29 @@ const Cards = (props) => {
     );
   };
 
-  const makeTextBody = (item) => (
-    <>
-      <Card.Content>
-        <Card.Header>{item.title ? item.title : item.id}</Card.Header>
-        {item.meta && <Card.Meta>{serializeNodes(item.meta)}</Card.Meta>}
-        {item.text && (
-          <Card.Description>{serializeNodes(item.text)}</Card.Description>
-        )}
-      </Card.Content>
-      {item.link && (
-        <Card.Content extra>
-          <UniversalLink href={getFieldURL(item.link)}>
-            <Icon name="linkify" />
-            {item.linkTitle || getFieldURL(item.link)}
-          </UniversalLink>
+  const makeTextBody = (item) => {
+    const link = getFieldURL(item.link);
+
+    return (
+      <>
+        <Card.Content>
+          <Card.Header>{item.title ? item.title : item.id}</Card.Header>
+          {item.meta && <Card.Meta>{serializeNodes(item.meta)}</Card.Meta>}
+          {item.text && (
+            <Card.Description>{serializeNodes(item.text)}</Card.Description>
+          )}
         </Card.Content>
-      )}
-    </>
-  );
+        {item.link && (
+          <Card.Content extra>
+            <UniversalLink href={link}>
+              <Icon name="linkify" />
+              {item.linkTitle || link}
+            </UniversalLink>
+          </Card.Content>
+        )}
+      </>
+    );
+  };
 
   if (!cards?.length && editable) {
     return <Message>No image cards</Message>;
