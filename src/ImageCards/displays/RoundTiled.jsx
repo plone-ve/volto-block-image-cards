@@ -4,7 +4,8 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { UniversalLink } from '@plone/volto/components';
 import { BodyClass } from '@plone/volto/helpers';
 import cx from 'classnames';
-import { getScaleUrl, getFieldURL } from '../utils';
+import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
+import { getScaleUrl } from '../utils';
 import '../css/roundtiled.less';
 
 export const Card = (props) => {
