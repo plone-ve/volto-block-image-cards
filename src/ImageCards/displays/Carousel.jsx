@@ -1,12 +1,13 @@
 import React from 'react';
+import cx from 'classnames';
 import loadable from '@loadable/component';
 import { Message } from 'semantic-ui-react';
 import { Icon, UniversalLink } from '@plone/volto/components';
 import { BodyClass } from '@plone/volto/helpers';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
-import { getScaleUrl, getPath } from '../utils';
-import { CommonCarouselschemaExtender } from './../CommonAssets/schema';
-import cx from 'classnames';
+import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
+import { getScaleUrl } from '@eeacms/volto-block-image-cards/ImageCards/utils';
+import { CommonCarouselschemaExtender } from '@eeacms/volto-block-image-cards/ImageCards/CommonAssets/schema';
 
 import leftSVG from '@plone/volto/icons/left-key.svg';
 import rightSVG from '@plone/volto/icons/right-key.svg';
@@ -100,52 +101,57 @@ const Carousel = (props) => {
       >
         <div className="slider-wrapper" style={{ height: `${height}px` }}>
           <Slider {...settings} ref={slider}>
-            {(cards || []).map((card, index) => (
-              <div className="slider-slide" key={index}>
-                <div
-                  className="slide-img"
-                  style={
-                    card.attachedimage
-                      ? {
-                          backgroundImage: `url(${getScaleUrl(
-                            getPath(card.attachedimage),
-                            image_scale || 'large',
-                          )})`,
-                          height: `${height}px`,
-                        }
-                      : {}
-                  }
-                />
-                <div className="slide-overlay"></div>
-                <div className="slider-caption ui container">
-                  <div className="slide-body">
-                    {card.link ? (
-                      <UniversalLink href={card.link}>
+            {(cards || []).map((card, index) => {
+              const link = getFieldURL(card.link);
+              const image = getFieldURL(card.attachedimage);
+
+              return (
+                <div className="slider-slide" key={index}>
+                  <div
+                    className="slide-img"
+                    style={
+                      image
+                        ? {
+                            backgroundImage: `url(${getScaleUrl(
+                              image,
+                              image_scale || 'large',
+                            )})`,
+                            height: `${height}px`,
+                          }
+                        : {}
+                    }
+                  />
+                  <div className="slide-overlay"></div>
+                  <div className="slider-caption ui container">
+                    <div className="slide-body">
+                      {card.link ? (
+                        <UniversalLink href={link}>
+                          <div className="slide-title">{card.title || ''}</div>
+                        </UniversalLink>
+                      ) : (
                         <div className="slide-title">{card.title || ''}</div>
-                      </UniversalLink>
-                    ) : (
-                      <div className="slide-title">{card.title || ''}</div>
-                    )}
-                    {/* Incomplete backward-compatibility: */}
-                    {card.text?.data ? (
-                      <div
-                        className="slide-description"
-                        dangerouslySetInnerHTML={{
-                          __html: card.text?.data || '',
-                        }}
-                      />
-                    ) : (
-                      <div className="slide-description">
-                        {serializeNodes(card.text)}
-                      </div>
-                    )}
+                      )}
+                      {/* Incomplete backward-compatibility: */}
+                      {card.text?.data ? (
+                        <div
+                          className="slide-description"
+                          dangerouslySetInnerHTML={{
+                            __html: card.text?.data || '',
+                          }}
+                        />
+                      ) : (
+                        <div className="slide-description">
+                          {serializeNodes(card.text)}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="slide-copyright ui container">
+                    {serializeNodes(card.copyright)}
                   </div>
                 </div>
-                <div className="slide-copyright ui container">
-                  {serializeNodes(card.copyright)}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </Slider>
           {!hideArrows && cards.length > 1 && <Arrows slider={slider} />}
         </div>

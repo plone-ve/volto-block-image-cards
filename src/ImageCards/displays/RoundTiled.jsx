@@ -4,11 +4,14 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { UniversalLink } from '@plone/volto/components';
 import { BodyClass } from '@plone/volto/helpers';
 import cx from 'classnames';
-import { getScaleUrl, getPath } from '../utils';
+import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
+import { getScaleUrl } from '../utils';
 import '../css/roundtiled.less';
 
 export const Card = (props) => {
-  const { title, link, attachedimage, image_scale } = props;
+  const { title, image_scale } = props;
+  const attachedimage = getFieldURL(props.attachedimage);
+  const link = getFieldURL(props.link);
 
   return (
     <div className="card">
@@ -22,7 +25,7 @@ export const Card = (props) => {
                   attachedimage
                     ? {
                         backgroundImage: `url(${getScaleUrl(
-                          getPath(attachedimage),
+                          attachedimage,
                           image_scale || 'preview',
                         )})`,
                       }
@@ -42,7 +45,7 @@ export const Card = (props) => {
                 attachedimage
                   ? {
                       backgroundImage: `url(${getScaleUrl(
-                        getPath(attachedimage),
+                        attachedimage,
                         image_scale || 'preview',
                       )})`,
                     }
