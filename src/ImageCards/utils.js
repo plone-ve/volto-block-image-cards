@@ -41,7 +41,7 @@ export function getImageScaleParams(image, size) {
         return {
           download: flattenToAppURL(
             `${image['@id']}/@@images/${
-              image.image_field || 'preview_image'
+              image.image_field || 'image'
             }/${imageScale}`,
           ),
         };

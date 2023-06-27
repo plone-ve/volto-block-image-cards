@@ -117,7 +117,7 @@ const Carousel = (props) => {
                       image
                         ? {
                             backgroundImage: `url(${
-                              bgImageUrl?.download ?? bgImageUrl
+                              bgImageUrl?.download ?? bgImageUrl?.['@id']
                             })`,
                             height: `${height || bgImageUrl?.height}px`,
                           }
