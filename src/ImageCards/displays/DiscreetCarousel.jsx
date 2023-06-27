@@ -33,12 +33,14 @@ const Card = ({ card = {}, height, image_scale, mode = 'view' }) => {
     <div className="discreet-slide-img" style={{ height }}>
       <PopupWrapper>
         <LinkWrapper>
-          <Image
-            className="bg-image"
-            src={imageSrc?.download ?? imageSrc}
-            height={height || imageSrc?.height}
-            width={'100%'}
-          />
+          {imageSrc ? (
+            <Image
+              className="bg-image"
+              src={imageSrc?.download ?? imageSrc}
+              height={height || imageSrc?.height}
+              width={'100%'}
+            />
+          ) : null}
         </LinkWrapper>
       </PopupWrapper>
     </div>
