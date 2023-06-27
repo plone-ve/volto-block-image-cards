@@ -2,7 +2,7 @@ import React from 'react';
 import loadable from '@loadable/component';
 import { Popup, Image, Message } from 'semantic-ui-react';
 import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
-import { getScaleUrl } from '@eeacms/volto-block-image-cards/ImageCards/utils';
+import { getImageScaleParams } from '@eeacms/volto-block-image-cards/ImageCards/utils';
 import ResponsiveContainer from '@eeacms/volto-block-image-cards/ImageCards/ResponsiveContainer';
 import { CommonCarouselschemaExtender } from '@eeacms/volto-block-image-cards/ImageCards/CommonAssets/schema';
 
@@ -15,6 +15,7 @@ const Card = ({ card = {}, height, image_scale, mode = 'view' }) => {
   const { title } = card;
   const link = getFieldURL(card.link);
   const image = getFieldURL(card.attachedimage);
+  const imageSrc = getImageScaleParams(image, image_scale || 'large');
 
   const LinkWrapper =
     link && mode === 'view'
@@ -34,7 +35,9 @@ const Card = ({ card = {}, height, image_scale, mode = 'view' }) => {
         <LinkWrapper>
           <Image
             className="bg-image"
-            src={getScaleUrl(image, image_scale || 'large')}
+            src={imageSrc?.download ?? imageSrc}
+            height={height || imageSrc?.height}
+            width={'100%'}
           />
         </LinkWrapper>
       </PopupWrapper>

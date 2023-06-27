@@ -5,12 +5,16 @@ import { UniversalLink } from '@plone/volto/components';
 import { BodyClass } from '@plone/volto/helpers';
 import cx from 'classnames';
 import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
-import { getScaleUrl } from '../utils';
+import { getImageScaleParams } from '../utils';
 import '../css/roundtiled.less';
 
 export const Card = (props) => {
   const { title, image_scale } = props;
   const attachedimage = getFieldURL(props.attachedimage);
+  const bgImageSrc = getImageScaleParams(
+    attachedimage,
+    image_scale || 'preview',
+  );
   const link = getFieldURL(props.link);
 
   return (
@@ -24,10 +28,9 @@ export const Card = (props) => {
                 style={
                   attachedimage
                     ? {
-                        backgroundImage: `url(${getScaleUrl(
-                          attachedimage,
-                          image_scale || 'preview',
-                        )})`,
+                        backgroundImage: `url(${
+                          bgImageSrc?.download ?? bgImageSrc
+                        })`,
                       }
                     : {}
                 }
@@ -44,10 +47,9 @@ export const Card = (props) => {
               style={
                 attachedimage
                   ? {
-                      backgroundImage: `url(${getScaleUrl(
-                        attachedimage,
-                        image_scale || 'preview',
-                      )})`,
+                      backgroundImage: `url(${
+                        bgImageSrc?.download ?? bgImageSrc
+                      })`,
                     }
                   : {}
               }
