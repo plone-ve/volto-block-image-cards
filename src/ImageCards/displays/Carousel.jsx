@@ -103,9 +103,8 @@ const Carousel = (props) => {
           <Slider {...settings} ref={slider}>
             {(cards || []).map((card, index) => {
               const link = getFieldURL(card.link);
-              const image = getFieldURL(card.attachedimage);
               const bgImageUrl = getImageScaleParams(
-                image,
+                card.attachedimage,
                 image_scale || 'large',
               );
 
@@ -114,7 +113,7 @@ const Carousel = (props) => {
                   <div
                     className="slide-img"
                     style={
-                      image
+                      bgImageUrl
                         ? {
                             backgroundImage: `url(${
                               bgImageUrl?.download ?? bgImageUrl?.['@id']

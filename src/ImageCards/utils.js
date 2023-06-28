@@ -1,5 +1,6 @@
 import isString from 'lodash/isString';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
+import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
 
 export function getImageScaleParams(image, size) {
   const imageScale = size || 'preview';
@@ -10,13 +11,15 @@ export function getImageScaleParams(image, size) {
       : image;
 
   if (image) {
-    if (isInternalURL(image['@id'])) {
+    if (isInternalURL(getFieldURL(image))) {
       if (image?.image_scales?.[image?.image_field]) {
         const scale =
           image.image_scales[image.image_field]?.[0].scales?.[imageScale] ||
           image.image_scales[image.image_field]?.[0];
 
-        const download = flattenToAppURL(`${image['@id']}/${scale?.download}`);
+        const download = flattenToAppURL(
+          `${getFieldURL(image)}/${scale?.download}`,
+        );
         const width = scale?.width;
         const height = scale?.height;
 
@@ -40,14 +43,14 @@ export function getImageScaleParams(image, size) {
         //fallback if we do not have scales
         return {
           download: flattenToAppURL(
-            `${image['@id']}/@@images/${
+            `${getFieldURL(image)}/@@images/${
               image.image_field || 'image'
             }/${imageScale}`,
           ),
         };
       }
     } else {
-      return { download: image['@id'] };
+      return { download: getFieldURL(image) };
     }
   }
 }

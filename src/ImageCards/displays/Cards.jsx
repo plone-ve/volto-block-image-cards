@@ -29,20 +29,19 @@ const Cards = (props) => {
 
   const makeImage = (item) => {
     const { attachedimage } = item;
-    const fieldUrl = getFieldURL(attachedimage);
-    const imageSrc = fieldUrl
-      ? getImageScaleParams(fieldUrl, image_scale || 'preview')
+    const imageSrc = attachedimage
+      ? getImageScaleParams(attachedimage, image_scale || 'preview')
       : isEditMode
       ? DefaultImageSVG
       : '';
-    return (
+    return imageSrc ? (
       <img
         src={imageSrc?.download ?? imageSrc}
         alt={item.title}
         height={height || imageSrc?.height || '100%'}
         width={'100%'}
       />
-    );
+    ) : null;
   };
 
   const makeTextBody = (item) => {

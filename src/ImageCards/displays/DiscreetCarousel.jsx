@@ -14,8 +14,10 @@ const Slider = loadable(() => import('react-slick'));
 const Card = ({ card = {}, height, image_scale, mode = 'view' }) => {
   const { title } = card;
   const link = getFieldURL(card.link);
-  const image = getFieldURL(card.attachedimage);
-  const imageSrc = getImageScaleParams(image, image_scale || 'large');
+  const imageSrc = getImageScaleParams(
+    card.attachedimage,
+    image_scale || 'large',
+  );
 
   const LinkWrapper =
     link && mode === 'view'
@@ -36,7 +38,7 @@ const Card = ({ card = {}, height, image_scale, mode = 'view' }) => {
           {imageSrc ? (
             <Image
               className="bg-image"
-              src={imageSrc?.download ?? imageSrc}
+              src={imageSrc?.download ?? ''}
               height={height || imageSrc?.height}
               width={'100%'}
             />
