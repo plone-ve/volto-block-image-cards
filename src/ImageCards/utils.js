@@ -54,28 +54,3 @@ export function getImageScaleParams(image, size) {
     }
   }
 }
-
-export const setImageSize = (image, imageParams, size) => {
-  const imageScaled = isInternalURL(image)
-    ? (() => {
-        if (imageParams) {
-          const { scales = null } = imageParams;
-          if (scales) {
-            if (size === 'big') return scales.huge;
-            if (size === 'medium') return scales.large;
-            if (size === 'small') return scales.mini;
-            if (size === 'preview') return scales.preview;
-            if (size === 'tiny') return scales.thumb;
-            return scales.large;
-          } else
-            return {
-              download: imageParams?.download,
-              width: imageParams?.width,
-              height: imageParams?.height,
-            };
-        }
-      })()
-    : { download: image, width: '100%', height: '100%' };
-
-  return imageScaled;
-};
