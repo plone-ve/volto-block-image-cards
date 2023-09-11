@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@cypress/code-coverage": "^3.10.0",
+    "cypress-file-upload": "5.0.8",
     "@plone/scripts": "*",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "cypress-fail-fast": "^5.0.1",
