@@ -104,16 +104,3 @@ Or run it:
   ```Bash
   make cypress-run
   ```
- installed.
-
-Open Cypress Interface:
-
-  ```Bash
-  make cypress-open
-  ```
-
-Or run it:
-
-  ```Bash
-  make cypress-run
-  ```
