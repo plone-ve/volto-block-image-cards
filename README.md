@@ -14,12 +14,20 @@
 [![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-block-image-cards-develop&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-block-image-cards-develop)
 [![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-block-image-cards-develop&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-block-image-cards-develop)
 
-
-[Volto](https://github.com/plone/volto) add-on
+Image Cards Block [Volto](https://github.com/plone/volto) add-on
 
 ## Features
 
-Demo GIF
+- Round Tile
+- Splashy Carousel
+- Discreet Carousel
+- Cards grid
+
+## Upgrade
+
+### Upgrading to 1.x
+
+This version requires: `@plone/volto >= 16.0.0.alpha.15` (`volto-slate` part of Volto Core).
 
 ## Getting started
 
