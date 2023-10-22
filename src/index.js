@@ -7,7 +7,7 @@ import {
   RoundTiled,
 } from './ImageCards/displays';
 
-export default (config) => {
+export default function applyConfig(config) {
   config.blocks.blocksConfig.imagecards = {
     id: 'imagecards',
     title: 'Image Cards',
@@ -50,4 +50,4 @@ export default (config) => {
   };
 
   return config;
-};
+}
