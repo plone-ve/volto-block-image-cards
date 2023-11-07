@@ -23,6 +23,8 @@ Image Cards Block [Volto](https://github.com/plone/volto) add-on
 - Discreet Carousel
 - Cards grid
 
+[Block Image Cards](https://raw.githubusercontent.com/eea/volto-block-image-cards/master/docs/block-image-cards.png)
+
 ## Upgrade
 
 ### Upgrading to 1.x
@@ -31,17 +33,26 @@ This version requires: `@plone/volto >= 16.0.0.alpha.15` (`volto-slate` part of 
 
 ## Getting started
 
-1. Create new volto project if you don't already have one:
+### Try volto-block-image-cards with Docker
 
+      git clone https://github.com/eea/volto-block-image-cards.git
+      cd volto-block-image-cards
+      make
+      make start
+
+Go to http://localhost:3000
+
+### Add volto-block-image-cards to your Volto project
+
+1. Make sure you have a [Plone backend](https://plone.org/download) up-and-running at http://localhost:8080/Plone
+
+   ```Bash
+   docker compose up backend
    ```
-   $ npm install -g yo @plone/generator-volto
-   $ yo @plone/volto my-volto-project --addon @eeacms/volto-block-image-cards
 
-   $ cd my-volto-project
-   $ yarn add -W @eeacms/volto-block-image-cards
-   ```
+1. Start Volto frontend
 
-1. If you already have a volto project, just update `package.json`:
+* If you already have a volto project, just update `package.json`:
 
    ```JSON
    "addons": [
@@ -49,15 +60,23 @@ This version requires: `@plone/volto >= 16.0.0.alpha.15` (`volto-slate` part of 
    ],
 
    "dependencies": {
-       "@eeacms/volto-block-image-cards": "^1.0.0"
+       "@eeacms/volto-block-image-cards": "*"
    }
+   ```
+
+* If not, create one:
+
+   ```
+   npm install -g yo @plone/generator-volto
+   yo @plone/volto my-volto-project --canary --addon @eeacms/volto-block-image-cards
+   cd my-volto-project
    ```
 
 1. Install new add-ons and restart Volto:
 
    ```
-   $ yarn
-   $ yarn start
+   yarn
+   yarn start
    ```
 
 1. Go to http://localhost:3000

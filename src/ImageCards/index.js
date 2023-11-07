@@ -1,2 +1,2 @@
-export ImageCardsView from './ImageCardsView';
-export ImageCardsEdit from './ImageCardsEdit';
+export { default as ImageCardsView } from './ImageCardsView';
+export { default as ImageCardsEdit } from './ImageCardsEdit';
