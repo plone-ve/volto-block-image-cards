@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { Provider } from 'react-intl-redux';
 import config from '@plone/volto/registry';
 import ImageCardsEdit from './ImageCardsEdit';
 
@@ -28,12 +29,13 @@ config.blocks.blocksConfig = {
 describe('ImageCardsEdit', () => {
   it('should render without crashing', () => {
     const component = renderer.create(
-      <ImageCardsEdit
-        data={{ display: 'id1' }}
-        selected={false}
-        onChangeBlock={jest.fn()}
-        block={{}}
-      />,
+      <Provider store={global.store}>
+        <ImageCardsEdit
+          data={{ display: 'id1' }}
+          onChangeBlock={jest.fn()}
+          block="1234"
+        />
+      </Provider>,
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
@@ -41,12 +43,13 @@ describe('ImageCardsEdit', () => {
 
   it('should render without crashing and no display', () => {
     const component = renderer.create(
-      <ImageCardsEdit
-        data={{ display: undefined }}
-        selected={false}
-        onChangeBlock={jest.fn()}
-        block={{}}
-      />,
+      <Provider store={global.store}>
+        <ImageCardsEdit
+          data={{ display: undefined }}
+          onChangeBlock={jest.fn()}
+          block="1234"
+        />
+      </Provider>,
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
