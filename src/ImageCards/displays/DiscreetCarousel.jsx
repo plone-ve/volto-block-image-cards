@@ -19,7 +19,7 @@ const Card = ({ card = {}, height, image_scale, mode = 'view' }) => {
   const LinkWrapper =
     link && mode === 'view'
       ? ({ children }) => (
-          <a href={link} target="_blank" rel="noreferrer" title={title}>
+          <a href={link} target="_blank" rel="noopener" title={title}>
             {children}
           </a>
         )
