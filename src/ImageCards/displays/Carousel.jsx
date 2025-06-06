@@ -6,7 +6,7 @@ import { Icon, UniversalLink } from '@plone/volto/components';
 import { BodyClass } from '@plone/volto/helpers';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
 import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
-import { getImageScaleParams } from '@eeacms/volto-block-image-cards/ImageCards/utils';
+import { getImageScaleParams } from '@eeacms/volto-object-widget/helpers';
 import { CommonCarouselschemaExtender } from '@eeacms/volto-block-image-cards/ImageCards/CommonAssets/schema';
 
 import leftSVG from '@plone/volto/icons/left-key.svg';

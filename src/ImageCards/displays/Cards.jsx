@@ -4,7 +4,7 @@ import { Card, Icon, Message } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
 import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
-import { getImageScaleParams } from '@eeacms/volto-block-image-cards/ImageCards/utils';
+import { getImageScaleParams } from '@eeacms/volto-object-widget/helpers';
 
 import '@eeacms/volto-block-image-cards/ImageCards/css/cards.less';
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';

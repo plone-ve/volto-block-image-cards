@@ -2,7 +2,7 @@ import React from 'react';
 import loadable from '@loadable/component';
 import { Popup, Image, Message } from 'semantic-ui-react';
 import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
-import { getImageScaleParams } from '@eeacms/volto-block-image-cards/ImageCards/utils';
+import { getImageScaleParams } from '@eeacms/volto-object-widget/helpers';
 import ResponsiveContainer from '@eeacms/volto-block-image-cards/ImageCards/ResponsiveContainer';
 import { CommonCarouselschemaExtender } from '@eeacms/volto-block-image-cards/ImageCards/CommonAssets/schema';
 

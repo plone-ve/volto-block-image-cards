@@ -5,7 +5,7 @@ import { UniversalLink } from '@plone/volto/components';
 import { BodyClass } from '@plone/volto/helpers';
 import cx from 'classnames';
 import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
-import { getImageScaleParams } from '../utils';
+import { getImageScaleParams } from '@eeacms/volto-object-widget/helpers';
 import '../css/roundtiled.less';
 
 export const Card = (props) => {
