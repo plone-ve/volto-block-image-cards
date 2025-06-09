@@ -148,7 +148,7 @@ const DiscreetCarousel = (props) => {
 export default DiscreetCarousel;
 
 DiscreetCarousel.schemaExtender = (schema, data, intl) => {
-  const Common = CommonCarouselschemaExtender({ data, schema, intl });
+  const Common = CommonCarouselschemaExtender({ data, intl });
   Common.properties.itemsPerRow = {
     type: 'number',
     title: intl.formatMessage(messages.slideCountTitle),

@@ -4,9 +4,8 @@ import loadable from '@loadable/component';
 import { Message } from 'semantic-ui-react';
 import { useIntl } from 'react-intl';
 import { Icon, UniversalLink } from '@plone/volto/components';
-import { BodyClass } from '@plone/volto/helpers';
+import { BodyClass, getFieldURL } from '@plone/volto/helpers';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
-import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
 import { getImageScaleParams } from '@eeacms/volto-object-widget/helpers';
 import { CommonCarouselschemaExtender } from '@eeacms/volto-block-image-cards/ImageCards/CommonAssets/schema';
 
@@ -171,7 +170,7 @@ const Carousel = (props) => {
 export default Carousel;
 
 Carousel.schemaExtender = (schema, data, intl) => {
-  const Common = CommonCarouselschemaExtender({ data, schema, intl });
+  const Common = CommonCarouselschemaExtender({ data, intl });
 
   return {
     ...schema,
