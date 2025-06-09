@@ -8,6 +8,8 @@ import { getFieldURL } from '@eeacms/volto-block-image-cards/helpers';
 import { getImageScaleParams } from '@eeacms/volto-object-widget/helpers';
 import '../css/roundtiled.less';
 
+import messages from '@eeacms/volto-block-image-cards/messages';
+
 export const Card = (props) => {
   const { title, image_scale } = props;
   const bgImageSrc = getImageScaleParams(
@@ -58,11 +60,11 @@ export const Card = (props) => {
 };
 
 const RoundTiled = (props) => {
-  const { data, editable } = props;
+  const { data, editable, intl } = props;
   const { title, cards, image_scale } = data;
 
   if (!cards?.length && editable) {
-    return <Message>No image cards</Message>;
+    return <Message>{intl.formatMessage(messages.imageCardsNull)}</Message>;
   }
 
   return cards?.length ? (
