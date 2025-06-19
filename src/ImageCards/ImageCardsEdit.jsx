@@ -1,4 +1,5 @@
 import React from 'react';
+import { injectIntl } from 'react-intl';
 import { SidebarPortal } from '@plone/volto/components';
 import InlineForm from '@plone/volto/components/manage/Form/InlineForm';
 import config from '@plone/volto/registry';
@@ -45,4 +46,4 @@ const ImageCardsEdit = (props) => {
   return <CardsEdit {...props} />;
 };
 
-export default ImageCardsEdit;
+export default injectIntl(ImageCardsEdit);
