@@ -1,5 +1,4 @@
 import config from '@plone/volto/registry';
-import { useIntl } from 'react-intl';
 
 import messages from '@eeacms/volto-block-image-cards/messages';
 
@@ -30,6 +29,7 @@ const ImageCard = (intl) => {
       attachedimage: {
         widget: 'attachedimage',
         title: intl.formatMessage(messages.image),
+        selectedItemAttrs: ['image_field', 'image_scales', '@type'],
       },
       copyright: {
         widget: 'slate_richtext',
@@ -41,8 +41,7 @@ const ImageCard = (intl) => {
   };
 };
 
-const ImageCards = (props) => {
-  const intl = useIntl();
+const ImageCards = (props, intl) => {
   const display_types_obj =
     config.blocks.blocksConfig.imagecards.blockRenderers;
   const display_types = Object.keys(display_types_obj).map((template) => {
