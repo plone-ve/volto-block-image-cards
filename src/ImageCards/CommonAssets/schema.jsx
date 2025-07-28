@@ -1,12 +1,9 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
 
 import messages from '@eeacms/volto-block-image-cards/messages';
 
 // See https://react-slick.neostack.com/docs/api
-export const CommonCarouselschemaExtender = ({ data }) => {
-  const intl = useIntl();
-
+export const CommonCarouselschemaExtender = ({ data, intl }) => {
   return {
     fieldsets: [
       {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { injectIntl } from 'react-intl';
 import { SidebarPortal } from '@plone/volto/components';
 import InlineForm from '@plone/volto/components/manage/Form/InlineForm';
 import config from '@plone/volto/registry';
@@ -16,12 +17,12 @@ const tweakSchema = (schema, data, intl) => {
 
 const CardsEdit = (props) => {
   const { selected, onChangeBlock, data = {}, block, intl } = props;
-  const basicSchema = ImageCardSchema(props);
+  const basicSchema = ImageCardSchema(props, intl);
   const schema = tweakSchema(basicSchema, props.data, intl);
 
   return (
     <>
-      <ImageCardsView {...props} />
+      <ImageCardsView {...props} isEditMode={true} />
 
       <SidebarPortal selected={selected}>
         <InlineForm
@@ -45,4 +46,4 @@ const ImageCardsEdit = (props) => {
   return <CardsEdit {...props} />;
 };
 
-export default ImageCardsEdit;
+export default injectIntl(ImageCardsEdit);
